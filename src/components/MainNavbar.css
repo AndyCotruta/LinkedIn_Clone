@@ -1,0 +1,143 @@
+:root {
+  /*color palette*/
+  --linkedin-dark-blue: #0a66c2;
+  --linkedin-light-blue: #70b5f9;
+  --linkedin-grey: rgba(102, 102, 102, 0.6);
+  --linkedin-green: #7fc15e;
+  --linkedin-brown: #915907;
+  --linkedin-orange: #e7a33e;
+  --linkedin-salmon: #f5987e;
+  --linkedin-bg-off-white: #f3f2ef;
+  --linkedin-white: #ffffff;
+  --linkedin-black: rgba(0, 0, 0, 0.9);
+}
+
+.navbar-main {
+  background-color: var(--linkedin-white);
+  display: flex;
+  align-items: baseline;
+  justify-content: center;
+  padding: 0;
+  margin-block-end: 20px;
+  position: sticky !important;
+  top: 0px;
+  z-index: 1;
+  height: 53px;
+}
+.nav-view-profile-btn {
+  cursor: pointer;
+  width: 220px;
+  height: 30px;
+  display: flex !important;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50px !important;
+  color: var(--linkedin-dark-blue) !important;
+  background-color: var(--linkedin-white) !important;
+  border-color: var(--linkedin-dark-blue) !important;
+}
+
+.profile-name {
+  font-size: 12px;
+}
+
+.profile-icon {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+}
+.work-icon {
+  width: 24px;
+  height: 24px;
+}
+
+.menu-size {
+  width: 80px;
+  height: 53px;
+  display: flex;
+  justify-content: center;
+}
+
+.profile-drop-down {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.dropdown-toggle {
+  padding: 0 !important;
+}
+/* color: #fff; */
+/* background-color: #007bff; */
+/* border-color: #007bff; */
+
+.nav-li-icon {
+  color: var(--linkedin-dark-blue);
+  height: 2em !important;
+  margin-right: 0.5em;
+}
+.nav-icon {
+  color: var(--linkedin-grey);
+}
+
+.logo-mini {
+  width: 40px;
+}
+.logo-mini img {
+  width: 35px;
+  height: 35px;
+  cursor: pointer;
+}
+
+.search-input {
+  width: 280px !important;
+  height: 35px !important;
+  background-color: #eef3f8 !important;
+  border: none !important;
+  outline: none !important;
+}
+
+.search-position {
+  position: relative;
+}
+
+.nav-menu-icon {
+  width: 24px;
+  filter: brightness(2.2);
+}
+
+.nav-text {
+  color: #777575;
+}
+.nav-text:hover {
+  color: #000000;
+}
+
+.premium {
+  color: var(--linkedin-brown);
+}
+
+.menu-size:hover .nav-menu-icon {
+  filter: brightness(1);
+}
+.menu-size:hover .nav-text {
+  color: #000000;
+}
+
+.dropdown-menu {
+  width: 234px;
+  left: -180px !important;
+  top: 25px !important;
+  border-radius: 10px 0 10px 10px !important;
+  box-shadow: 4px 7px 6px -4px grey;
+}
+
+.profile-icon2 {
+  width: 60px;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+.work {
+  border-left: solid 0.5px grey;
+}

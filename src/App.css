@@ -1,0 +1,785 @@
+@import url("https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap");
+
+globalFonts {
+  --main-font: "Lato", sans-serif;
+}
+:root {
+  /*color palette*/
+
+  --linkedin-dark-blue: #0a66c2;
+  --linkedin-darker-blue: #035f97;
+  --linkedin-light-blue: #70b5f9;
+  --linkedin-super-light-blue: #e3f0fe;
+  --linkedin-dark-grey: #00000099;
+  --linkedin-grey: rgba(102, 102, 102, 0.6);
+  --linkedin-white-grey: #e8e5df;
+  --linkedin-green: #7fc15e;
+  --linkedin-brown: #915907;
+  --linkedin-orange: #e7a33e;
+  --linkedin-salmon: #f5987e;
+  --linkedin-bg-off-white: #f3f2ee;
+  --linkedin-white: #ffffff;
+  --linkedin-black: rgba(0, 0, 0, 0.9);
+
+  overflow-y: scroll;
+  overflow-x: hidden;
+  background-color: var(--linkedin-bg-off-white);
+
+  /* / Fonts */
+
+  --main-font: "Lato", sans-serif;
+}
+
+/* -------Main-Profile-Section---------- */
+
+body {
+  background-color: var(--linkedin-white-grey) !important;
+}
+
+.container {
+  max-width: 1128px !important;
+}
+
+.profile-main {
+  /* width: 782px; */
+  border-radius: 10px;
+  border: solid 1px var(--linkedin-white-grey);
+  overflow: auto;
+}
+
+.profile-cover {
+  width: 100%;
+  height: 195.5px;
+  position: relative;
+}
+
+.profile-cover img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.profile-picture {
+  width: 160px;
+  height: 160px;
+  position: absolute;
+  border-radius: 50%;
+  overflow: auto;
+  bottom: -40px;
+  border: 5px solid white;
+  left: 20px;
+}
+.profile-picture img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.profile-text-area {
+  width: 100%;
+  padding: 40px 24px 24px 24px;
+  box-sizing: border-box;
+  font-family: var(--main-font);
+  background-color: var(--linkedin-white);
+}
+
+p {
+  margin: 0 !important;
+}
+
+.fs-24 {
+  font-size: 24px;
+}
+
+.fs-20 {
+  font-size: 20px;
+}
+
+.fs-16 {
+  font-size: 16px;
+}
+
+@import url("https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap");
+
+/* Box sizing rules */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* Remove default margin */
+* {
+  margin: 0;
+  padding: 0;
+  font-size: inherit;
+  font-family: var(--main-font);
+}
+
+/* Remove list styles on ul, ol elements with a list role, which suggests default styling will be removed */
+ul,
+ol {
+  margin: 0;
+  list-style: none;
+}
+
+/* Set core root defaults */
+html:focus-within {
+  scroll-behavior: smooth;
+}
+
+/* Set core body defaults */
+body {
+  min-height: 100vh;
+  width: 100%;
+  background-color: var(--linkedin-bg-off-white) !important;
+  text-rendering: optimizeSpeed;
+  line-height: 1.5;
+}
+
+/* A elements that don't have a class get default styles */
+a:not([class]) {
+  text-decoration-skip-ink: auto;
+}
+
+/* Make images easier to work with */
+img,
+picture,
+svg {
+  max-width: 100%;
+  display: block;
+}
+
+/* Remove all animations, transitions and smooth scroll for people that prefer not to see them */
+@media (prefers-reduced-motion: reduce) {
+  html:focus-within {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* ....................... Utility classes ........................ */
+
+.pointer {
+  cursor: pointer;
+}
+
+.fw-bold {
+  font-weight: bold;
+}
+
+.fs-12 {
+  font-size: 12px;
+}
+
+.fs-14 {
+  font-size: 14px;
+}
+
+.fw-700 {
+  font-weight: 700;
+}
+.fw-800 {
+  font-weight: 800;
+}
+
+.margin-0 {
+  margin: 0;
+}
+
+.ff {
+  font-family: var(--main-font);
+}
+
+.cd {
+  background-color: var(--linkedin-white);
+  border: 1px solid var(--linkedin-white-grey);
+  margin-block-start: 0.25em;
+  border-radius: 10px;
+  padding: 24px;
+}
+
+.ld-grey {
+  color: var(--linkedin-grey);
+}
+
+.ld-btn {
+  height: 35px;
+  font-size: 16px;
+  font-weight: 700;
+  font-family: var(--main-font);
+  border-radius: 100px;
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+/* ----------- custom style --------------- */
+
+/* ------Profile Card------ */
+
+.contact-location {
+  margin-block: 10px;
+}
+
+.location {
+  color: var(--linkedin-grey);
+}
+
+.contact-info {
+  margin-inline-start: 10px;
+  color: var(--linkedin-dark-blue);
+  cursor: pointer;
+}
+
+.profile-buttons {
+  width: 320px;
+}
+
+.first-button {
+  width: 120px;
+  background-color: var(--linkedin-dark-blue);
+  color: var(--linkedin-white);
+}
+.first-button img {
+  width: 15px;
+  margin-inline-end: 5px;
+}
+
+.first-button:hover {
+  background-color: #003468;
+  transition: 0.3s;
+}
+
+.second-button {
+  width: 100px;
+  background-color: var(--linkedin-white);
+  border: solid 1px var(--linkedin-dark-blue);
+  color: var(--linkedin-dark-blue);
+}
+.second-button img {
+  width: 15px;
+  margin-inline-end: 5px;
+}
+.second-button:hover {
+  width: 100px;
+  background-color: #d2e8ff;
+  border: solid 2px var(--linkedin-dark-blue);
+  color: var(--linkedin-dark-blue);
+  transition: 0.3s;
+}
+
+.third-button {
+  width: 80px;
+}
+.gray-button {
+  background-color: var(--linkedin-white);
+  border: solid 1px var(--linkedin-grey);
+  color: #646464;
+}
+.third-button:hover {
+  width: 80px;
+  background-color: rgb(232, 232, 232);
+  border: solid 2px var(--linkedin-grey);
+  color: var(--linkedin-grey);
+  transition: 0.3s;
+}
+
+/* ------------About-Section------- */
+
+.about-title {
+  margin-block-end: 10px;
+}
+
+/* 
+-------------Activity Section-------- */
+
+.activity-section {
+  border-radius: 10px 10px 0 0;
+  border-bottom: none;
+}
+
+.activity-status {
+  margin-block-start: 15px !important;
+  margin-block-end: 0;
+}
+
+.cd-bottom-btn {
+  background-color: white;
+  font-family: var(--main-font);
+  padding: 10px 24px;
+  border-radius: 0 0 10px 10px;
+  border: 1px solid var(--linkedin-white-grey);
+  color: #646464;
+  cursor: pointer;
+  border-top: 1px solid #ededed;
+}
+
+.icon {
+  width: 15px;
+  margin-inline-start: 5px;
+}
+.show-activity:hover {
+  background-color: rgb(241, 241, 241);
+  transition: 0.3s;
+}
+
+/* --------Experience------- */
+
+.experience-content {
+  display: flex;
+  padding: 12px 0;
+}
+.experience-subsection {
+  display: flex;
+  justify-content: space-between;
+}
+.experience-buttons {
+  height: 50px;
+  width: 50px;
+  border-radius: 50%;
+  align-items: center;
+  border: none;
+  background-color: white;
+}
+.experience-buttons-icon {
+  height: 25px;
+  width: 25px;
+  color: var(--linkedin-dark-grey);
+  justify-content: center;
+  align-self: center;
+  padding: 0%;
+  margin: auto;
+}
+.experience-buttons:hover {
+  background-color: var(--linkedin-bg-off-white);
+  cursor: pointer;
+}
+.experience-modal {
+  height: 80vh;
+  border-radius: 20%;
+  position: fixed;
+}
+.experience-logo {
+  width: 56px;
+  height: 48px;
+}
+.experience-logo img {
+  width: 48px;
+}
+
+.show-credential {
+  margin-block-start: 10px;
+  width: 170px;
+}
+
+.skills-logo img {
+  width: 24px;
+  margin-inline-end: 10px;
+}
+
+/* ------Interests------ */
+
+.nav-link.active {
+  border: none;
+  color: #009688 !important;
+  background-color: #fff0;
+  border-color: #ffffff #ffffff #009688 !important;
+}
+
+.nav-tabs .nav-link:hover {
+  border-color: #ffffff #ffffff #e4e4e4 !important;
+}
+
+a {
+  color: var(--linkedin-grey) !important;
+}
+.fs-16 {
+  font-size: 16px;
+}
+
+.fs-18 {
+  font-size: 18px;
+}
+
+.fs-20 {
+  font-size: 20px;
+}
+
+.linkedin-black {
+  color: var(--linkedin-black);
+}
+
+.linkedin-d-blue {
+  color: var(--linkedin-dark-blue);
+}
+
+.linkedin-l-blue {
+  color: var(--linkedin-light-blue);
+}
+
+.linkedin-d-grey {
+  color: var(--linkedin-dark-grey);
+}
+
+.linkedin-m-grey {
+  color: var(--linkedin-grey);
+}
+
+.linkedin-l-grey {
+  color: var(--linkedin-white-grey);
+}
+
+/* ....................... Home Page ........................ */
+.mainContainerPost {
+  background-color: var(--linkedin-white);
+  border-radius: 10px;
+  /* width: 550px; */
+  border: solid 1px var(--linkedin-white-grey);
+  /* height: 116px; */
+}
+.userPicturePost {
+  width: 48px;
+  height: 48px;
+  object-fit: cover;
+  border-radius: 50%;
+}
+.userPostBtn {
+  margin-top: 10px;
+  border: 1px solid grey;
+  background-color: var(--linkedin-white);
+  height: 48px;
+  border-radius: 100px;
+  font-weight: bold;
+  color: var(--linkedin-dark-grey);
+  text-align: left;
+}
+.userPostBtn:hover {
+  background-color: rgb(240, 240, 240);
+}
+.userPostIcons {
+  justify-content: space-between;
+  align-items: center;
+}
+.share-box-feed {
+  display: flex;
+  /* flex-wrap: wrap; */
+  justify-content: space-around;
+  /* border: none; */
+  align-items: center;
+}
+.like-box-feed {
+  display: flex;
+  /* flex-wrap: wrap; */
+  justify-content: space-around;
+  /* border: none; */
+  align-items: center;
+  border-block-start: solid 1px var(--linkedin-white-grey);
+}
+.share-box-btn {
+  border: none;
+  border-radius: 5px;
+  background-color: var(--linkedin-white);
+}
+.share-box-btn:hover {
+  background-color: var(--linkedin-bg-off-white);
+}
+
+.width-hover {
+  width: 100px;
+}
+
+/* ....................... Utility classes ........................ */
+
+.sidebarUL {
+  background-color: var(--linkedin-white);
+  border: 1px solid var(--linkedin-white-grey);
+  border-radius: 8px;
+  padding-inline: 1rem;
+  width: 100%;
+  height: auto;
+}
+
+.sidebarLi:not(:last-child) {
+  border-bottom: 1px solid var(--linkedin-white-grey);
+}
+
+.action-li {
+  border: 1px solid var(--linkedin-white-grey);
+  border-top: none;
+  background-color: var(--linkedin-white);
+  width: 100%;
+  border-bottom-left-radius: 8px;
+  border-bottom-right-radius: 8px;
+  padding: 8px;
+  font-weight: bold;
+  color: var(--linkedin-dark-grey);
+}
+
+.action-li:hover {
+  background-color: #ebebeb;
+}
+
+.profilesUL {
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+}
+
+.sticky {
+  position: sticky;
+  top: 60px;
+}
+
+.mini-profile {
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  background-color: var(--linkedin-bg-off-white);
+}
+
+.BB-Btn {
+  border: 1px solid var(--linkedin-dark-blue);
+  padding-inline: 1rem;
+  border-radius: 1rem;
+  background-color: transparent;
+  color: var(--linkedin-dark-blue);
+  font-weight: bold;
+  height: 32px;
+  transition: all 0.2s ease-in-out;
+}
+
+.BB-Btn:hover {
+  box-shadow: inset 0px 0px 0px 1px var(--linkedin-dark-blue);
+  background-color: var(--linkedin-super-light-blue);
+}
+
+.GR-Btn {
+  border: 1px solid var(--linkedin-dark-grey);
+  color: var(--linkedin-dark-grey);
+  padding-inline: 1rem;
+  border-radius: 1rem;
+  background-color: transparent;
+  font-weight: bold;
+  height: 32px;
+  transition: all 0.2s ease-in-out;
+}
+
+.GR-Btn:hover {
+  box-shadow: inset 0px 0px 0px 1px var(--linkedin-dark-grey);
+  background-color: #ebebeb;
+}
+
+.xs-profiles {
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  background-color: var(--linkedin-bg-off-white);
+}
+
+.courses-img {
+  width: 100px;
+  height: 60px;
+  object-fit: cover;
+}
+
+.courses-name {
+  width: 160px;
+}
+
+.courses-preview {
+  position: relative;
+}
+
+.courses-play-btn {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  color: var(--linkedin-white);
+  background-color: rgba(0, 0, 0, 0.47);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.courses-play-btn:hover {
+  box-shadow: inset 0px 0px 0px 2px var(--linkedin-white);
+}
+
+.post-text {
+  border: none !important;
+}
+
+.modal-content {
+  border-radius: 11px !important;
+}
+
+.btn-primary {
+  color: var(--linkedin-white);
+  background-color: var(--linkedin-dark-blue);
+  border-color: transparent;
+  border-radius: 50px;
+  font-weight: 900;
+  width: 60px;
+}
+
+@media screen and (max-width: 1000px) {
+  /* .navbar-nav {
+    display: flex;
+    flex-direction: row;
+    padding-left: 0;
+    margin-bottom: 0;
+    list-style: none;
+  } */
+
+  .menu-on-collapse {
+    display: flex;
+    flex-direction: column;
+    transition: 1s;
+  }
+
+  .elapsed-menu {
+    background-color: white;
+    padding: 10px;
+    box-shadow: 6px 7px 10px -4px grey;
+    border-radius: 0 0 10px 10px;
+    border: 1px solid gray;
+  }
+
+  .logo-on-collapse {
+    align-items: baseline !important;
+  }
+
+  .work {
+    border-top: solid 0.5px grey;
+    border-left: solid 0.5px transparent;
+  }
+
+  .profile-picture-mini img {
+    transform: translateX(50%);
+    left: 40%;
+  }
+
+  .form-inline {
+    display: none;
+  }
+  .profile-text-mini {
+    display: none !important;
+  }
+}
+/* ............................................LogIn............................................. */
+.login-container {
+  display: flex;
+  align-items: center;
+  padding: 1rem;
+}
+
+.login-welcome-text {
+  color: var(--linkedin-brown);
+  font-size: 3rem;
+  padding-bottom: 2rem;
+}
+
+.login-input-area {
+  max-width: 408px;
+}
+
+.login-input {
+  padding: 0.5rem;
+  background-color: transparent;
+  border: 2px solid var(--linkedin-dark-grey);
+  border-radius: 4px;
+}
+
+.login-wrong-credentials {
+  color: red;
+  font-weight: bold;
+  padding-top: 0.5rem;
+}
+
+.login-agreement-text {
+  color: var(--linkedin-dark-blue);
+  font-weight: bold;
+}
+
+.login-image {
+  width: 700px;
+  height: 560px;
+}
+/* ............................................LogIn............................................. */
+
+/* ............................................AnimationPage............................................. */
+
+.animation-container {
+  width: 100%;
+  height: 400px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.animation-text {
+  font-size: 3rem;
+}
+
+.animation-text-lnkdn {
+  color: var(--linkedin-dark-blue);
+  font-weight: bold;
+}
+
+.animation-progress {
+  width: 60%;
+}
+
+/* ............................................AnimationPage............................................. */
+
+/* .........................................Buttons.............................................. */
+
+.blue-button-container {
+  background-color: var(--linkedin-dark-blue);
+  text-align: center;
+  padding-block: 1rem;
+  border-radius: 3rem;
+  cursor: pointer;
+}
+
+.blue-button-container:hover {
+  background-color: var(--linkedin-darker-blue);
+}
+
+.blue-button-text {
+  color: white;
+  font-weight: 600;
+  font-size: 1.2rem;
+}
+
+/* .........................................Buttons.............................................. */
+
+/* .........................................Responsive Design.................................... */
+
+@media screen and (max-width: 768px) {
+  .login-container {
+    display: flex;
+    flex-direction: column;
+  }
+  .login-welcome-text {
+    font-size: 2rem;
+  }
+}
+
+/* .........................................Responsive Design.................................... */
