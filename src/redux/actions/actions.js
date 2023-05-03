@@ -28,7 +28,6 @@ export const fetchProfile = (accessToken) => {
       });
       if (response.ok) {
         let data = await response.json();
-        console.log(data);
         dispatch({
           type: ADD_MY_PROFILE,
           payload: data,
@@ -46,7 +45,6 @@ export const fetchPosts = () => {
       let response = await fetch("http://localhost:3001/posts");
       if (response.ok) {
         let data = await response.json();
-        console.log(data);
         dispatch({
           type: ADD_ALL_POSTS,
           payload: data,
@@ -66,7 +64,6 @@ export const fetchAllProfiles = () => {
       let response = await fetch("http://localhost:3001/users");
       if (response.ok) {
         let data = await response.json();
-        console.log(data);
         dispatch({
           type: ADD_ALL_PROFILES,
           payload: data,

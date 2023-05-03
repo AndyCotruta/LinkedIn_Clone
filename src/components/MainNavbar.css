@@ -141,3 +141,12 @@
 .work {
   border-left: solid 0.5px grey;
 }
+
+.login-buttons {
+  border-left: 2px solid var(--linkedin-grey);
+  height: 40px;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding-left: 1rem;
+}

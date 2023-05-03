@@ -13,18 +13,24 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import HomePage from "./components/HomePage/HomePage";
 import LogIn from "./components/LogInPage/LogIn";
 import AnimationPage from "./components/AnimationPage/AnimationPage";
+import { useState } from "react";
 
 function App() {
+  const [signUp, setSignUp] = useState(true);
+
   return (
     <div>
       <BrowserRouter>
-        <MainNavbar />
+        <MainNavbar signUp={signUp} setSignUp={setSignUp} />
         <Container>
           <Row>
             <Routes>
               <Route path="/profile/:userId" element={<UserProfile />} />
               <Route path="/" element={<HomePage />} />
-              <Route path="/login" element={<LogIn />} />
+              <Route
+                path="/login"
+                element={<LogIn signUp={signUp} setSignUp={setSignUp} />}
+              />
               <Route path="/redirect" element={<AnimationPage />} />
             </Routes>
           </Row>

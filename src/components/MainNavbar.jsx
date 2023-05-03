@@ -17,7 +17,8 @@ import notification from "../Icon/notification.svg";
 import work from "../Icon/work.svg";
 import { useNavigate } from "react-router-dom";
 import SearchModel from "./SearchModel";
-
+import BlueBorderBtn from "./BlueBorderBtn";
+import BlueButton from "./BlueButton";
 // import { ADD_QUERY, ADD_SEARCH_RESULTS, CHANGE_CLICKED_SEARCH_STATUS } from "../redux/actions/actions";
 import {
   ADD_CLICKED_PROFILE,
@@ -30,7 +31,7 @@ import {
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState } from "react";
 
-const MainNavbar = () => {
+const MainNavbar = ({ signUp, setSignUp }) => {
   const clickedSearch = useSelector((state) => state.search.clicked);
   const allProfiles = useSelector((state) => state.profiles.allProfiles);
   const searchResults = useSelector((state) => state.search.searchResults);
@@ -278,19 +279,47 @@ const MainNavbar = () => {
                     </NavDropdown>
                   </div>
                 )}
-
-                <div className="profile-drop-down menu-size work">
-                  <img src={work} alt="" className="nav-menu-icon" />
-                  <NavDropdown
-                    title="Work"
-                    id="basic-nav-dropdown"
-                    className="profile-name "
-                  ></NavDropdown>
-                </div>
-                <Nav.Link href="#premium" className="text-align-center ">
-                  <p className="fs-12 fw-700 premium">Network Smarter,</p>{" "}
-                  <p className="fs-12 fw-700 premium">Try premium Free!</p>
-                </Nav.Link>
+                {myProfile ? (
+                  <div className="d-flex">
+                    <div className="profile-drop-down menu-size work">
+                      <img src={work} alt="" className="nav-menu-icon" />
+                      <NavDropdown
+                        title="Work"
+                        id="basic-nav-dropdown"
+                        className="profile-name "
+                      ></NavDropdown>
+                    </div>
+                    <Nav.Link href="#premium" className="text-align-center ">
+                      <p className="fs-12 fw-700 premium">Network Smarter,</p>{" "}
+                      <p className="fs-12 fw-700 premium">Try premium Free!</p>
+                    </Nav.Link>
+                  </div>
+                ) : (
+                  <div className="login-buttons">
+                    <div
+                      onClick={() => {
+                        setSignUp(true);
+                      }}
+                    >
+                      {signUp ? (
+                        <BlueButton text={"Sign Up"} />
+                      ) : (
+                        <BlueBorderBtn content={"Sign Up"} />
+                      )}
+                    </div>
+                    <div
+                      onClick={() => {
+                        setSignUp(false);
+                      }}
+                    >
+                      {signUp ? (
+                        <BlueBorderBtn content={"Log In"} />
+                      ) : (
+                        <BlueButton text={"Log In"} />
+                      )}
+                    </div>
+                  </div>
+                )}
               </Nav>
             </Navbar.Collapse>
           </div>
