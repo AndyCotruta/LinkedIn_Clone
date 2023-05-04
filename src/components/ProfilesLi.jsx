@@ -6,18 +6,9 @@ import GreyBorderBtn from "./GreyBorderBtn";
 
 const ProfilesLi = (props) => {
   const navigate = useNavigate();
-  const action = ADD_CLICKED_PROFILE;
   const dispatch = useDispatch();
+
   const id = props.profile._id;
-  const endPoint = "https://striveschool-api.herokuapp.com/api/profile/";
-  const accessToken =
-    "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2Mzk3MGQxOGM5NmRmYjAwMTUyMWE1YzkiLCJpYXQiOjE2NzA4NDM2NzIsImV4cCI6MTY3MjA1MzI3Mn0.0dUkULTnbH-D7rmu6VpWb4OqjIwfSynoJ3nmyP2FbL4";
-  const options = {
-    method: "GET",
-    headers: {
-      Authorization: "Bearer " + accessToken,
-    },
-  };
 
   return (
     <li className="sidebarLi d-flex">
@@ -28,8 +19,11 @@ const ProfilesLi = (props) => {
             src={props.profile.image}
             alt="mini-profile-pics"
             onClick={() => {
-              navigate(`/profile/${props.profile._id}`);
-              dispatch(fetchProfile(endPoint, options, id, action));
+              dispatch({
+                type: ADD_CLICKED_PROFILE,
+                payload: props.profile,
+              });
+              navigate(`/profile/${id}`);
             }}
           />
         </div>
@@ -40,8 +34,11 @@ const ProfilesLi = (props) => {
           <span
             className="fw-bold pointer"
             onClick={() => {
-              navigate(`/profile/${props.profile._id}`);
-              dispatch(fetchProfile(endPoint, options, id, action));
+              dispatch({
+                type: ADD_CLICKED_PROFILE,
+                payload: props.profile,
+              });
+              navigate(`/profile/${id}`);
             }}
           >
             {props.profile.firstName} {props.profile.lastName} |{" "}
