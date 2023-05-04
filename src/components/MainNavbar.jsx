@@ -51,13 +51,12 @@ const MainNavbar = ({ signUp, setSignUp }) => {
   };
 
   useEffect(() => {
-    const searchResults = allProfiles.filter(
+    const filteredResults = allProfiles.filter(
       (profile) =>
         profile.firstName.toLowerCase().includes(query) ||
         profile.lastName.toLowerCase().includes(query)
     );
-    console.log(searchResults);
-    setSearchedResults(searchResults);
+    setSearchedResults(filteredResults);
   }, [query]);
 
   return (

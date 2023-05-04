@@ -39,6 +39,32 @@ export const fetchProfile = (accessToken) => {
   };
 };
 
+export const editProfile = (accessToken, editedData) => {
+  return async (dispatch) => {
+    try {
+      let response = await fetch("http://localhost:3001/users/me", {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${accessToken}`,
+        },
+        body: JSON.stringify(editedData),
+      });
+      if (response.ok) {
+        let data = await response.json();
+        dispatch({
+          type: ADD_MY_PROFILE,
+          payload: data,
+        });
+      } else {
+        console.log("Error while trying to update user data");
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+};
+
 export const fetchPosts = () => {
   return async (dispatch) => {
     try {

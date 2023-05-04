@@ -3,27 +3,25 @@ import plus from "../Icon/Plus.svg";
 import { useDispatch, useSelector } from "react-redux";
 import { useLocation, useParams } from "react-router-dom";
 import { HiOutlinePencil } from "react-icons/hi";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { CHANGE_SHOW_PROFILE_MODAL } from "../redux/actions/actions";
 import MyProfileModal from "./MyProfileModal";
 
 const ProfileSection = (props) => {
   const params = useParams();
-  const myProfile = useSelector((state) => state.profiles.myProfile);
-  const showProfileModal = useSelector(
-    (state) => state.profiles.showProfileModal
-  );
   const dispatch = useDispatch();
+
+  const myProfile = useSelector((state) => state.profiles.myProfile);
+
+  const [showModal, setShowModal] = useState(false);
 
   return (
     <div className="profile-main">
       <MyProfileModal
-        show={showProfileModal}
+        show={showModal}
+        setShowModal={setShowModal}
         onHide={() => {
-          dispatch({
-            type: CHANGE_SHOW_PROFILE_MODAL,
-            payload: false,
-          });
+          setShowModal(false);
         }}
       />
       <div className="profile-cover">
@@ -47,10 +45,7 @@ const ProfileSection = (props) => {
                 <HiOutlinePencil
                   className="experience-buttons-icon"
                   onClick={() => {
-                    dispatch({
-                      type: CHANGE_SHOW_PROFILE_MODAL,
-                      payload: true,
-                    });
+                    setShowModal(true);
                   }}
                 />
               </button>
@@ -59,7 +54,9 @@ const ProfileSection = (props) => {
 
           <p className="user-role fs-16">{props.currentProfile.title}</p>
           <div className="contact-location d-flex align-items-center">
-            <p className="location fs-14  mr-2">{props.currentProfile.area}</p>
+            <p className="location fs-14  mr-2">
+              {props.currentProfile.location}
+            </p>
             <p className="contact-info fs-14 fw-700">Contact info</p>
           </div>
         </div>

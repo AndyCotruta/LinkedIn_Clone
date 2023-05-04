@@ -3,20 +3,25 @@ import { Button, Form, Modal } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import {
   CHANGE_SHOW_PROFILE_MODAL,
+  editProfile,
   fetchProfile,
 } from "../redux/actions/actions";
+import BlueButton from "./BlueButton";
+import GreyBorderBtn from "./GreyBorderBtn";
 
 const MyProfileModal = (props) => {
   const dispatch = useDispatch();
+
   const myProfile = useSelector((state) => state.profiles.myProfile);
+  const accessToken = localStorage.getItem("accessToken");
 
   const [addedMyProfileData, setaddedMyProfileData] = useState({
-    name: "",
-    surname: "",
-    email: "",
-    title: "",
-    area: "",
-    bio: "",
+    firstName: myProfile.firstName,
+    lastName: myProfile.lastName,
+    email: myProfile.email,
+    title: myProfile.title,
+    location: myProfile.location,
+    about: myProfile.about,
   });
 
   function handleChange(event) {
@@ -26,23 +31,6 @@ const MyProfileModal = (props) => {
     });
   }
 
-  useEffect(() => {
-    setaddedMyProfileData(myProfile);
-  }, [myProfile]);
-
-  const endPoint = "https://striveschool-api.herokuapp.com/api/profile/";
-  const accessToken =
-    "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2Mzk3MGQxOGM5NmRmYjAwMTUyMWE1YzkiLCJpYXQiOjE2NzA4NDM2NzIsImV4cCI6MTY3MjA1MzI3Mn0.0dUkULTnbH-D7rmu6VpWb4OqjIwfSynoJ3nmyP2FbL4";
-  const options = {
-    method: "PUT",
-    headers: {
-      Authorization: "Bearer " + accessToken,
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify(addedMyProfileData),
-  };
-  const id = "";
-  const action = "";
   return (
     <Modal {...props}>
       <Modal.Header closeButton>
@@ -57,8 +45,8 @@ const MyProfileModal = (props) => {
           <Form.Group controlId="exampleForm.ControlInput1">
             <Form.Label>Name*</Form.Label>
             <Form.Control
-              value={addedMyProfileData.name}
-              name="name"
+              value={addedMyProfileData.firstName}
+              name="firstName"
               onChange={handleChange}
               type="text"
               placeholder=""
@@ -67,8 +55,8 @@ const MyProfileModal = (props) => {
           <Form.Group controlId="exampleForm.ControlInput1">
             <Form.Label>Surname*</Form.Label>
             <Form.Control
-              value={addedMyProfileData.surname}
-              name="surname"
+              value={addedMyProfileData.lastName}
+              name="lastName"
               onChange={handleChange}
               type="text"
               placeholder=""
@@ -97,8 +85,8 @@ const MyProfileModal = (props) => {
           <Form.Group controlId="exampleForm.ControlInput1">
             <Form.Label>Location*</Form.Label>
             <Form.Control
-              value={addedMyProfileData.area}
-              name="area"
+              value={addedMyProfileData.location}
+              name="location"
               onChange={handleChange}
               type="text"
               placeholder=""
@@ -107,8 +95,8 @@ const MyProfileModal = (props) => {
           <Form.Group controlId="exampleForm.ControlInput1">
             <Form.Label>About*</Form.Label>
             <Form.Control
-              value={addedMyProfileData.bio}
-              name="bio"
+              value={addedMyProfileData.about}
+              name="about"
               onChange={handleChange}
               type="text"
               placeholder=""
@@ -117,25 +105,20 @@ const MyProfileModal = (props) => {
         </Form>
       </Modal.Body>
       <Modal.Footer>
-        <Button
-          variant="secondary"
+        <div
           onClick={() => {
-            dispatch({
-              type: CHANGE_SHOW_PROFILE_MODAL,
-              payload: false,
-            });
+            props.setShowModal(false);
           }}
         >
-          Close
-        </Button>
-        <Button
-          variant="primary"
+          <GreyBorderBtn content={"Close"} />
+        </div>
+        <div
           onClick={() => {
-            dispatch(fetchProfile(endPoint, options, id, action));
+            dispatch(editProfile(accessToken, addedMyProfileData));
           }}
         >
-          Save Changes
-        </Button>
+          <BlueButton text={"Save Changes"} />
+        </div>
       </Modal.Footer>
     </Modal>
   );
