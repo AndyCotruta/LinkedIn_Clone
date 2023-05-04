@@ -32,31 +32,14 @@ import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState } from "react";
 
 const MainNavbar = ({ signUp, setSignUp }) => {
-  const clickedSearch = useSelector((state) => state.search.clicked);
-  const allProfiles = useSelector((state) => state.profiles.allProfiles);
-  const searchResults = useSelector((state) => state.search.searchResults);
-  const myProfile = useSelector((state) => state.profiles.myProfile);
-  const [query, setQuery] = useState("");
-
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
-  const filterProfiles = (e) => {
-    dispatch({
-      type: ADD_QUERY,
-      payload: e,
-    });
+  const myProfile = useSelector((state) => state.profiles.myProfile);
+  const allProfiles = useSelector((state) => state.profiles.allProfiles.users);
 
-    const filteredResults = allProfiles.filter(
-      (profile) =>
-        profile.name.toLowerCase().includes(query) ||
-        profile.surname.toLowerCase().includes(query)
-    );
-    dispatch({
-      type: ADD_SEARCH_RESULTS,
-      payload: filteredResults,
-    });
-  };
+  const [searchResults, setSearchedResults] = useState([]);
+  const [query, setQuery] = useState("");
 
   const handleSignOut = () => {
     localStorage.removeItem("accessToken");
@@ -66,6 +49,16 @@ const MainNavbar = ({ signUp, setSignUp }) => {
     });
     navigate("/login");
   };
+
+  useEffect(() => {
+    const searchResults = allProfiles.filter(
+      (profile) =>
+        profile.firstName.toLowerCase().includes(query) ||
+        profile.lastName.toLowerCase().includes(query)
+    );
+    console.log(searchResults);
+    setSearchedResults(searchResults);
+  }, [query]);
 
   return (
     <Navbar expand="lg" className="navbar-main">
@@ -88,27 +81,21 @@ const MainNavbar = ({ signUp, setSignUp }) => {
               <FormControl
                 type="text"
                 placeholder="Search"
+                value={query}
                 className="mr-sm-2 search-input"
-                onClick={() => {
-                  console.log("Search was clicked");
-                  dispatch({
-                    type: CHANGE_CLICKED_SEARCH_STATUS,
-                    payload: !clickedSearch,
-                  });
-                }}
                 onChange={(e) => {
                   setQuery(e.target.value);
-                  filterProfiles(e.target.value);
                 }}
               />
-              {clickedSearch && (
-                <div className="search-model ">
-                  {searchResults.length !== 0 &&
-                    searchResults
-                      .slice(0, 5)
-                      .map((result) => (
-                        <SearchModel resultData={result} key={result._id} />
-                      ))}
+              {searchResults.length !== 0 && query && (
+                <div className="search-model">
+                  {searchResults.slice(0, 5).map((result) => (
+                    <SearchModel
+                      resultData={result}
+                      key={result._id}
+                      setQuery={setQuery}
+                    />
+                  ))}
                 </div>
               )}
             </Form>
