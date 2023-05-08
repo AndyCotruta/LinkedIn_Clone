@@ -4,18 +4,25 @@ import { propTypes } from "react-bootstrap/esm/Image";
 import { useDispatch, useSelector } from "react-redux";
 import { parseISO, format } from "date-fns";
 import {
+  addExperience,
   ADD_EXPERIENCE,
   CHANGE_SHOW_MODAL,
+  editExperience,
   editProfile,
   fetchProfile,
   GET_EXPERIENCE,
 } from "../redux/actions/actions";
 import BlueButton from "./BlueButton";
 
-const ExperienceModal = (props) => {
+const ExperienceModal = ({
+  setShowModal,
+  editData,
+  currentExp,
+  index,
+  ...props
+}) => {
   const dispatch = useDispatch();
 
-  const { editData, currentExp, index } = { ...props };
   const accessToken = localStorage.getItem("accessToken");
   const myProfile = useSelector((state) => state.profiles.myProfile);
   const myExperiences = myProfile.experiences;
@@ -152,21 +159,18 @@ const ExperienceModal = (props) => {
         {editData ? (
           <div
             onClick={() => {
-              console.log("We clicked on update button");
-              dispatch(
-                editProfile(accessToken, {
-                  experiences: [
-                    ...myExperiences,
-                    (myExperiences[index] = editedData),
-                  ],
-                })
-              );
+              dispatch(editExperience(accessToken, editedData, index));
             }}
           >
             <BlueButton text={"Update"} />
           </div>
         ) : (
-          <div onClick={() => {}}>
+          <div
+            onClick={() => {
+              dispatch(addExperience(accessToken, addedData));
+              setShowModal(false);
+            }}
+          >
             <BlueButton text={"Save"} />
           </div>
         )}

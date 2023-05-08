@@ -5,11 +5,13 @@ import { HiOutlinePencil, HiTrash } from "react-icons/hi";
 import { format, parse, parseISO } from "date-fns";
 import ExperienceModal from "./ExperienceModal";
 import MyProfileModal from "./MyProfileModal";
+import { deleteExperience } from "../redux/actions/actions";
 
 function ExpCard({ experience, index, currentProfile }) {
   const dispatch = useDispatch();
 
   const myProfile = useSelector((state) => state.profiles.myProfile);
+  const accessToken = localStorage.getItem("accessToken");
 
   const [showEditExp, setShowEditExp] = useState(false);
   const [editData, setEditData] = useState(false);
@@ -30,7 +32,6 @@ function ExpCard({ experience, index, currentProfile }) {
       }}
     >
       <ExperienceModal
-        currentProfile={currentProfile}
         currentExp={currentExp}
         editData={editData}
         index={index}
@@ -51,7 +52,12 @@ function ExpCard({ experience, index, currentProfile }) {
       {showEditExp && currentProfile._id === myProfile._id && (
         <div>
           <button className="experience-buttons">
-            <HiTrash onClick={() => {}} className="experience-buttons-icon" />
+            <HiTrash
+              onClick={() => {
+                dispatch(deleteExperience(accessToken, experience));
+              }}
+              className="experience-buttons-icon"
+            />
           </button>
           <button className="experience-buttons">
             <HiOutlinePencil

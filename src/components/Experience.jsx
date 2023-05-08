@@ -29,7 +29,7 @@ const Experience = ({ currentProfile }) => {
   return (
     <div className="experience-section ">
       <ExperienceModal
-        currentProfile={currentProfile}
+        setShowModal={setShowModal}
         show={showModal}
         onHide={() => {
           setShowModal(false);

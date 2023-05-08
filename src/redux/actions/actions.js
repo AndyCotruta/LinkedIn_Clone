@@ -66,6 +66,87 @@ export const editProfile = (accessToken, editedData) => {
   };
 };
 
+export const addExperience = (accessToken, addedData) => {
+  return async (dispatch) => {
+    try {
+      let response = await fetch(`http://localhost:3001/users/me/experience`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${accessToken}`,
+        },
+        body: JSON.stringify(addedData),
+      });
+      if (response.ok) {
+        let data = await response.json();
+        dispatch({
+          type: ADD_MY_PROFILE,
+          payload: data,
+        });
+      } else {
+        console.log("Error while trying to add experience");
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+};
+
+export const editExperience = (accessToken, editedData, index) => {
+  return async (dispatch) => {
+    try {
+      let response = await fetch(
+        `http://localhost:3001/users/me/experience/${index}`,
+        {
+          method: "PUT",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${accessToken}`,
+          },
+          body: JSON.stringify(editedData),
+        }
+      );
+      if (response.ok) {
+        let data = await response.json();
+        dispatch({
+          type: ADD_MY_PROFILE,
+          payload: data,
+        });
+      } else {
+        console.log("Error while trying to update experience data");
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+};
+
+export const deleteExperience = (accessToken, experience) => {
+  return async (dispatch) => {
+    try {
+      let response = await fetch(`http://localhost:3001/users/me/experience/`, {
+        method: "DELETE",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${accessToken}`,
+        },
+        body: JSON.stringify(experience),
+      });
+      if (response.ok) {
+        let data = await response.json();
+        dispatch({
+          type: ADD_MY_PROFILE,
+          payload: data,
+        });
+      } else {
+        console.log("Error while trying to delete experience");
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+};
+
 export const fetchPosts = () => {
   return async (dispatch) => {
     try {
