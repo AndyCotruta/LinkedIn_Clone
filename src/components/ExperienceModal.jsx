@@ -6,25 +6,47 @@ import { parseISO, format } from "date-fns";
 import {
   ADD_EXPERIENCE,
   CHANGE_SHOW_MODAL,
+  editProfile,
   fetchProfile,
   GET_EXPERIENCE,
 } from "../redux/actions/actions";
+import BlueButton from "./BlueButton";
 
 const ExperienceModal = (props) => {
+  const dispatch = useDispatch();
+
+  const { editData, currentExp, index } = { ...props };
+  const accessToken = localStorage.getItem("accessToken");
+  const myProfile = useSelector((state) => state.profiles.myProfile);
+  const myExperiences = myProfile.experiences;
+
   const [addedData, setAddedData] = useState({
-    role: props.editData ? props.currentProfile.experiences.role : "",
-    company: props.editData ? props.currentProfile.experiences.company : "",
-    startDate: props.editData ? props.currentProfile.experiences.startDate : "",
-    endDate: props.editData ? props.currentProfile.experiences.endDate : "",
-    description: props.editData
-      ? props.currentProfile.experiences.description
-      : "",
-    location: props.editData ? props.currentProfile.experiences.location : "",
+    role: "",
+    company: "",
+    startDate: "",
+    endDate: "",
+    description: "",
+    location: "",
+  });
+  const [editedData, setEditedData] = useState({
+    role: currentExp?.role,
+    company: currentExp?.company,
+    startDate: currentExp?.startDate,
+    endDate: currentExp?.endDate,
+    description: currentExp?.description,
+    location: currentExp?.location,
   });
 
-  const handleChange = (event) => {
+  const handleAdd = (event) => {
     setAddedData({
       ...addedData,
+      [event.target.name]: event.target.value,
+    });
+  };
+
+  const handleEdit = (event) => {
+    setEditedData({
+      ...editedData,
       [event.target.name]: event.target.value,
     });
   };
@@ -38,11 +60,10 @@ const ExperienceModal = (props) => {
     >
       <Modal.Header closeButton>
         <Modal.Title id="contained-modal-title-vcenter" className="mx-3">
-          <span>Add</span>
+          {editData ? <span>Edit</span> : <span>Add</span>}
         </Modal.Title>
       </Modal.Header>
       <Modal.Body>
-        <p className="mx-3">* indicates required</p>
         <Form
           className="mx-3"
           onSubmit={(e) => {
@@ -52,41 +73,19 @@ const ExperienceModal = (props) => {
           <Form.Group controlId="exampleForm.ControlInput1">
             <Form.Label>Role*</Form.Label>
             <Form.Control
-              value={addedData.role}
-              onChange={handleChange}
+              value={editData ? editedData.role : addedData.role}
+              onChange={editData ? handleEdit : handleAdd}
               name="role"
               type="text"
               placeholder=""
             />
           </Form.Group>
-          <Form.Group controlId="exampleForm.ControlSelect1">
-            <Form.Label>Employment type</Form.Label>
-            <Form.Control as="select">
-              <option>Please select</option>
-              <option>Full-Time</option>
-              <option>Part-Time</option>
-              <option>Self-employed</option>
-              <option>Freelance</option>
-              <option>Contract</option>
-              <option>Internship</option>
-              <option>Apprenticeship</option>
-              <option>Seasonal</option>
-            </Form.Control>
-            <p>
-              Learn more about{" "}
-              <span>
-                <a href="https://www.linkedin.com/help/linkedin/answer/a549563?lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_self_edit_position%3BgJ0yLoo2SCiO0YPLpEz2Rg%3D%3D">
-                  employment types
-                </a>
-              </span>
-            </p>
-          </Form.Group>
           <Form.Group controlId="exampleForm.ControlInput1">
             <Form.Label>Company name*</Form.Label>
             <Form.Control
-              value={addedData.company}
+              value={editData ? editedData.company : addedData.company}
+              onChange={editData ? handleEdit : handleAdd}
               name="company"
-              onChange={handleChange}
               type="text"
               placeholder=""
             />
@@ -94,21 +93,12 @@ const ExperienceModal = (props) => {
           <Form.Group controlId="exampleForm.ControlTextarea1">
             <Form.Label>Location*</Form.Label>
             <Form.Control
-              value={addedData.location}
+              value={editData ? editedData.location : addedData.location}
+              onChange={editData ? handleEdit : handleAdd}
               name="location"
-              onChange={handleChange}
               type="text"
               placeholder=""
             />
-          </Form.Group>
-          <Form.Group controlId="exampleForm.ControlSelect1">
-            <Form.Label>Location type</Form.Label>
-            <Form.Control as="select">
-              <option>Please select</option>
-              <option>On-Site</option>
-              <option>Hybrid</option>
-              <option>Remote</option>
-            </Form.Control>
           </Form.Group>
           <Form.Group>
             <p>Start date*</p>
@@ -116,9 +106,13 @@ const ExperienceModal = (props) => {
               <Col>
                 <Form.Control
                   type="date"
-                  value={addedData.startDate}
+                  value={
+                    editData
+                      ? format(parseISO(editedData.startDate), "yyyy-MM-dd")
+                      : addedData.startDate
+                  }
+                  onChange={editData ? handleEdit : handleAdd}
                   name="startDate"
-                  onChange={handleChange}
                   placeholder="month"
                 />
               </Col>
@@ -130,9 +124,13 @@ const ExperienceModal = (props) => {
               <Col>
                 <Form.Control
                   type="date"
-                  value={addedData.endDate}
+                  value={
+                    editData
+                      ? format(parseISO(editedData.endDate), "yyyy-MM-dd")
+                      : addedData.endDate
+                  }
+                  onChange={editData ? handleEdit : handleAdd}
                   name="endDate"
-                  onChange={handleChange}
                   placeholder="month"
                 />
               </Col>
@@ -141,9 +139,9 @@ const ExperienceModal = (props) => {
           <Form.Group controlId="exampleForm.ControlTextarea1">
             <Form.Label>Description</Form.Label>
             <Form.Control
-              value={addedData.description}
+              value={editData ? editedData.description : addedData.description}
+              onChange={editData ? handleEdit : handleAdd}
               name="description"
-              onChange={handleChange}
               as="textarea"
               rows={3}
             />
@@ -151,10 +149,26 @@ const ExperienceModal = (props) => {
         </Form>
       </Modal.Body>
       <Modal.Footer>
-        {props.editData ? (
-          <Button onClick={() => {}}>Update</Button>
+        {editData ? (
+          <div
+            onClick={() => {
+              console.log("We clicked on update button");
+              dispatch(
+                editProfile(accessToken, {
+                  experiences: [
+                    ...myExperiences,
+                    (myExperiences[index] = editedData),
+                  ],
+                })
+              );
+            }}
+          >
+            <BlueButton text={"Update"} />
+          </div>
         ) : (
-          <Button onClick={() => {}}>Save</Button>
+          <div onClick={() => {}}>
+            <BlueButton text={"Save"} />
+          </div>
         )}
       </Modal.Footer>
     </Modal>

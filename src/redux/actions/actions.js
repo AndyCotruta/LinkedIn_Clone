@@ -51,6 +51,7 @@ export const editProfile = (accessToken, editedData) => {
         body: JSON.stringify(editedData),
       });
       if (response.ok) {
+        console.log("Response ok");
         let data = await response.json();
         dispatch({
           type: ADD_MY_PROFILE,

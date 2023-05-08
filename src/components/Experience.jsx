@@ -14,15 +14,15 @@ import { IoMdArrowBack } from "react-icons/io";
 import ExperienceModal from "./ExperienceModal";
 import { useParams } from "react-router-dom";
 import { format, parse, parseISO } from "date-fns";
+import ExpCard from "./ExpCard";
 
 const Experience = ({ currentProfile }) => {
   const dispatch = useDispatch();
   const params = useParams();
 
   const myProfile = useSelector((state) => state.profiles.myProfile);
-  const [showEditExp, setShowEditExp] = useState(false);
+
   const [showModal, setShowModal] = useState(false);
-  const [editData, setEditData] = useState(false);
 
   const experiences = currentProfile.experiences;
 
@@ -31,7 +31,6 @@ const Experience = ({ currentProfile }) => {
       <ExperienceModal
         currentProfile={currentProfile}
         show={showModal}
-        editData={editData}
         onHide={() => {
           setShowModal(false);
         }}
@@ -58,42 +57,13 @@ const Experience = ({ currentProfile }) => {
 
         {/* end here */}
       </div>
-      {experiences.map((experience) => (
-        <div
-          className="experience-content d-flex justify-content-between"
-          key={experience._id}
-          onMouseEnter={() => {
-            setShowEditExp(true);
-          }}
-          onMouseLeave={() => {
-            setShowEditExp(false);
-          }}
-        >
-          <div>
-            <p className="fs-16 fw-800">{experience.role}</p>
-            <p className="fs-14">{experience.company}</p>
-            <span className="fs-14 ld-grey">
-              from {format(parseISO(experience.startDate), "yyyy-MM-dd")}
-            </span>
-            <p className="fs-14 ld-grey">{experience.area}</p>
-          </div>
-          {showEditExp && (
-            <div>
-              <button className="experience-buttons">
-                <HiTrash
-                  onClick={() => {}}
-                  className="experience-buttons-icon"
-                />
-              </button>
-              <button className="experience-buttons">
-                <HiOutlinePencil
-                  className="experience-buttons-icon"
-                  onClick={() => {}}
-                />
-              </button>
-            </div>
-          )}
-        </div>
+      {experiences?.map((experience, i) => (
+        <ExpCard
+          key={i}
+          experience={experience}
+          index={i}
+          currentProfile={currentProfile}
+        />
       ))}
     </div>
   );
