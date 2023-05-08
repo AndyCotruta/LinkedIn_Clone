@@ -51,12 +51,14 @@ const MainNavbar = ({ signUp, setSignUp }) => {
   };
 
   useEffect(() => {
-    const filteredResults = allProfiles.filter(
-      (profile) =>
-        profile.firstName.toLowerCase().includes(query) ||
-        profile.lastName.toLowerCase().includes(query)
-    );
-    setSearchedResults(filteredResults);
+    if (allProfiles) {
+      const filteredResults = allProfiles.filter(
+        (profile) =>
+          profile.firstName.toLowerCase().includes(query) ||
+          profile.lastName.toLowerCase().includes(query)
+      );
+      setSearchedResults(filteredResults);
+    }
   }, [query]);
 
   return (

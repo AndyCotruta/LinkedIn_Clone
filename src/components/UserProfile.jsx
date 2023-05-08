@@ -19,16 +19,9 @@ const UserProfile = () => {
   const params = useParams();
   const myProfile = useSelector((state) => state.profiles.myProfile);
   const clickedProfile = useSelector((state) => state.profiles.clickedProfile);
-  const experiences = useSelector((state) => state.experience.expData);
-  const addedExpData = useSelector((state) => state.experience.addedExpData);
-  const editExpSection = useSelector(
-    (state) => state.experience.showEditExpSection
-  );
 
   const currentProfile =
     params.userId === myProfile._id ? myProfile : clickedProfile;
-
-  const dispatch = useDispatch();
 
   return (
     <>
@@ -40,12 +33,7 @@ const UserProfile = () => {
             <Activity />
           </div>
           <div className="experience cd cd-width ff">
-            {experiences.length !== 0 && (
-              <Experience
-                currentProfile={currentProfile}
-                experiences={experiences}
-              />
-            )}
+            <Experience currentProfile={currentProfile} />
           </div>
           <div className="education cd cd-width ff">
             <Education />
