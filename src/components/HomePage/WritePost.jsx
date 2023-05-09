@@ -9,7 +9,7 @@ const WritePost = () => {
   const dispatch = useDispatch();
 
   return (
-    <div className="mainContainerPost p-1">
+    <div className="mainContainerPost p-3">
       <PostModal
         show={showPostModal}
         onHide={() => {
@@ -21,12 +21,12 @@ const WritePost = () => {
       />
       <div className="d-flex align-items-center">
         <img
-          className="userPicturePost mt-2 ml-3"
+          className="userPicturePost mr-3"
           src={myProfile.image}
           alt={myProfile.name}
         />{" "}
         <button
-          className="userPostBtn m-2, p-2 w-100 mx-3"
+          className="userPostBtn"
           onClick={() => {
             dispatch({
               type: CHANGE_SHOW_POST_MODAL,
@@ -34,15 +34,15 @@ const WritePost = () => {
             });
           }}
         >
-          <span className="justify-content-flex-start ml-2 fs-14">
+          <span className="justify-content-flex-start ml-4 fs-14">
             Start a post
           </span>
         </button>
       </div>
-      <div className="share-box-feed wrapper my-1 fs-14 fw-800">
+      <div className="share-box-feed wrapper fs-14 fw-800 pt-3">
         <button
           aria-label="Add a photo"
-          className="d-flex share-box-btn py-2 px-1 my-1"
+          className="d-flex share-box-btn py-2 px-1"
         >
           {" "}
           <svg
@@ -60,7 +60,7 @@ const WritePost = () => {
         </button>
         <button
           aria-label="Add a video"
-          className="d-flex share-box-btn py-2 px-1 my-1"
+          className="d-flex share-box-btn py-2 px-1"
         >
           {" "}
           <svg
@@ -78,7 +78,7 @@ const WritePost = () => {
         </button>
         <button
           aria-label="Create an event"
-          className="d-flex share-box-btn py-2 px-1 my-1"
+          className="d-flex share-box-btn py-2 px-1"
         >
           {" "}
           <svg
@@ -96,7 +96,7 @@ const WritePost = () => {
         </button>
         <button
           aria-label="Write an article on LinkedIn"
-          className="d-flex share-box-btn py-2 px-1 my-1"
+          className="d-flex share-box-btn py-2 px-1"
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"

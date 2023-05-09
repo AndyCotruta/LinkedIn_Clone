@@ -449,13 +449,12 @@ a {
   /* height: 116px; */
 }
 .userPicturePost {
-  width: 48px;
-  height: 48px;
+  width: 50px;
+  height: 50px;
   object-fit: cover;
   border-radius: 50%;
 }
 .userPostBtn {
-  margin-top: 10px;
   border: 1px solid grey;
   background-color: var(--linkedin-white);
   height: 48px;
@@ -463,6 +462,7 @@ a {
   font-weight: bold;
   color: var(--linkedin-dark-grey);
   text-align: left;
+  flex-grow: 1;
 }
 .userPostBtn:hover {
   background-color: rgb(240, 240, 240);
@@ -474,7 +474,7 @@ a {
 .share-box-feed {
   display: flex;
   /* flex-wrap: wrap; */
-  justify-content: space-around;
+  justify-content: space-between;
   /* border: none; */
   align-items: center;
 }
@@ -543,6 +543,7 @@ a {
 .mini-profile {
   width: 72px;
   height: 72px;
+  object-fit: cover;
   border-radius: 50%;
   background-color: var(--linkedin-bg-off-white);
 }
