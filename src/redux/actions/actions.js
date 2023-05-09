@@ -42,13 +42,20 @@ export const fetchProfile = (accessToken) => {
 export const editProfile = (accessToken, editedData) => {
   return async (dispatch) => {
     try {
+      const formData = new FormData();
+      formData.append("firstName", editedData.firstName);
+      formData.append("lastName", editedData.lastName);
+      formData.append("email", editedData.email);
+      formData.append("title", editedData.title);
+      formData.append("location", editedData.location);
+      formData.append("about", editedData.about);
+      formData.append("userImage", editedData.image);
       let response = await fetch("http://localhost:3001/users/me", {
         method: "PUT",
         headers: {
-          "Content-Type": "application/json",
           Authorization: `Bearer ${accessToken}`,
         },
-        body: JSON.stringify(editedData),
+        body: formData,
       });
       if (response.ok) {
         console.log("Response ok");

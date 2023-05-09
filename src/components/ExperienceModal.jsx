@@ -168,7 +168,6 @@ const ExperienceModal = ({
           <div
             onClick={() => {
               dispatch(addExperience(accessToken, addedData));
-              setShowModal(false);
             }}
           >
             <BlueButton text={"Save"} />

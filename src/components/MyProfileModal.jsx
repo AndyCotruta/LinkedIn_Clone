@@ -22,12 +22,22 @@ const MyProfileModal = (props) => {
     title: myProfile.title,
     location: myProfile.location,
     about: myProfile.about,
+    image: myProfile.image,
   });
 
   function handleChange(event) {
     setaddedMyProfileData({
       ...addedMyProfileData,
       [event.target.name]: event.target.value,
+    });
+  }
+
+  function handleImageChange(event) {
+    console.log("Selecting image...");
+    console.log(URL.createObjectURL(event.target.files[0]));
+    setaddedMyProfileData({
+      ...addedMyProfileData,
+      image: event.target.files[0],
     });
   }
 
@@ -42,6 +52,15 @@ const MyProfileModal = (props) => {
             e.preventDefault();
           }}
         >
+          <Form.Group controlId="exampleForm.ControlInput1">
+            <Form.Label>Profile Picture</Form.Label>
+            <Form.Control
+              name="image"
+              onChange={handleImageChange}
+              type="file"
+              placeholder=""
+            />
+          </Form.Group>
           <Form.Group controlId="exampleForm.ControlInput1">
             <Form.Label>Name*</Form.Label>
             <Form.Control

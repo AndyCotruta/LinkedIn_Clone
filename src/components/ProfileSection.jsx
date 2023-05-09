@@ -14,6 +14,13 @@ const ProfileSection = (props) => {
   const myProfile = useSelector((state) => state.profiles.myProfile);
 
   const [showModal, setShowModal] = useState(false);
+  const [image, setImage] = useState();
+
+  const handleImageUpload = (e) => {
+    if (e.target.files) {
+      setImage(e.target.files[0]);
+    }
+  };
 
   return (
     <div className="profile-main">
@@ -29,7 +36,12 @@ const ProfileSection = (props) => {
           src="https://images.ctfassets.net/7thvzrs93dvf/wpImage18643/2f45c72db7876d2f40623a8b09a88b17/linkedin-default-background-cover-photo-1.png?w=790&h=196&q=90&fm=png"
           alt=""
         />
-        <div className="profile-picture">
+        <div
+          className="profile-picture"
+          onClick={(e) => {
+            handleImageUpload(e);
+          }}
+        >
           <img src={props.currentProfile.image} alt="profile-image" />
         </div>
       </div>
