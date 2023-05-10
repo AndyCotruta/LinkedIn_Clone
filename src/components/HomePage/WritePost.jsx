@@ -1,9 +1,13 @@
 import "./HomePage.css";
 import { useDispatch, useSelector } from "react-redux";
-import { CHANGE_SHOW_POST_MODAL } from "../../redux/actions/actions";
+import {
+  CHANGE_POST_MODAL_EDIT_MODE,
+  CHANGE_SHOW_POST_MODAL,
+} from "../../redux/actions/actions";
 import PostModal from "../PostModal";
 
 const WritePost = () => {
+  const editMode = useSelector((state) => state.posts.editMode);
   const myProfile = useSelector((state) => state.profiles.myProfile);
   const showPostModal = useSelector((state) => state.posts.showPostModal);
   const dispatch = useDispatch();
@@ -13,6 +17,10 @@ const WritePost = () => {
       <PostModal
         show={showPostModal}
         onHide={() => {
+          dispatch({
+            type: CHANGE_POST_MODAL_EDIT_MODE,
+            payload: false,
+          });
           dispatch({
             type: CHANGE_SHOW_POST_MODAL,
             payload: !showPostModal,

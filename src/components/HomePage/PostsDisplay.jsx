@@ -2,28 +2,27 @@ import like from "../../Icon/like.svg";
 import comment from "../../Icon/chat.svg";
 import repost from "../../Icon/share.svg";
 import share from "../../Icon/Send 2.svg";
-import { CHANGE_SHOW_POST_MODAL } from "../../redux/actions/actions";
+import {
+  CHANGE_EDIT_POST,
+  CHANGE_POST_MODAL_EDIT_MODE,
+  CHANGE_SHOW_POST_MODAL,
+} from "../../redux/actions/actions";
 import PostModal from "../PostModal";
 import { useDispatch, useSelector } from "react-redux";
+import { SlOptions } from "react-icons/sl";
+import { useState } from "react";
 
 const PostsDisplay = (props) => {
+  const dispatch = useDispatch();
+  const editMode = useSelector((state) => state.posts.editMode);
   const myProfile = useSelector((state) => state.profiles.myProfile);
   const showPostModal = useSelector((state) => state.posts.showPostModal);
-  const dispatch = useDispatch();
+  const [showPostOptions, setShowPostOptions] = useState(false);
 
   return (
     <>
-      <PostModal
-        show={showPostModal}
-        onHide={() => {
-          dispatch({
-            type: CHANGE_SHOW_POST_MODAL,
-            payload: !showPostModal,
-          });
-        }}
-      />
       <div className="mainContainerPost mb-3">
-        <div className="d-flex justify-content-between align-items-center p-3">
+        <div className="post-header d-flex justify-content-between align-items-center p-3">
           <div>
             <img
               className="userPicturePost mr-3"
@@ -40,7 +39,44 @@ const PostsDisplay = (props) => {
             </span>
             <div className="fs-12  ">{props.post.user.title}</div>
           </div>
-          {myProfile._id === props.post.user._id && <div>Edit</div>}
+          {myProfile._id === props.post.user._id && (
+            <div
+              onClick={() => {
+                setShowPostOptions(!showPostOptions);
+              }}
+              className="post-options-icon"
+            >
+              <SlOptions />
+            </div>
+          )}
+          {showPostOptions && (
+            <div className="post-options-container">
+              <div
+                className="post-options"
+                onClick={() => {
+                  dispatch({
+                    type: CHANGE_EDIT_POST,
+                    payload: {
+                      text: props.post.text,
+                      image: props.post.image,
+                    },
+                  });
+                  dispatch({
+                    type: CHANGE_POST_MODAL_EDIT_MODE,
+                    payload: true,
+                  });
+                  dispatch({
+                    type: CHANGE_SHOW_POST_MODAL,
+                    payload: !showPostModal,
+                  });
+                }}
+              >
+                Edit
+              </div>
+              <div className="post-options">Report</div>
+              <div className="post-options">Delete</div>
+            </div>
+          )}
         </div>
 
         <div className="post-content p-3 fs-14">

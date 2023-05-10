@@ -1,8 +1,15 @@
-import { ADD_ALL_POSTS, CHANGE_SHOW_POST_MODAL } from "../actions/actions";
+import {
+  ADD_ALL_POSTS,
+  CHANGE_EDIT_POST,
+  CHANGE_POST_MODAL_EDIT_MODE,
+  CHANGE_SHOW_POST_MODAL,
+} from "../actions/actions";
 
 const initialState = {
   posts: [],
   showPostModal: false,
+  editMode: false,
+  editPost: {},
 };
 
 const postsReducer = (state = initialState, action) => {
@@ -18,6 +25,18 @@ const postsReducer = (state = initialState, action) => {
       return {
         ...state,
         showPostModal: action.payload,
+      };
+    }
+    case CHANGE_POST_MODAL_EDIT_MODE: {
+      return {
+        ...state,
+        editMode: action.payload,
+      };
+    }
+    case CHANGE_EDIT_POST: {
+      return {
+        ...state,
+        editPost: action.payload,
       };
     }
 

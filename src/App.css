@@ -499,6 +499,45 @@ a {
   width: 100px;
 }
 
+.post-header {
+  position: relative;
+}
+
+.post-options-icon {
+  cursor: pointer;
+}
+
+.post-options-container {
+  background-color: white;
+  position: absolute;
+  right: 1rem;
+  top: 4rem;
+  border-radius: 10px;
+  border: 1px solid var(--linkedin-dark-grey);
+  color: var(--linkedin-dark-grey);
+}
+
+.post-options {
+  padding-block: 0.5rem;
+  padding-inline: 0.75rem;
+  cursor: pointer;
+}
+
+.post-options:first-child:hover {
+  border-radius: 10px 10px 0 0;
+  background-color: #ebebeb;
+}
+
+.post-options:hover {
+  background-color: #ebebeb;
+}
+
+.post-options:last-child:hover {
+  background-color: #ebebeb;
+  border-radius: 0 0 10px 10px;
+  color: red;
+}
+
 /* ....................... Utility classes ........................ */
 
 .sidebarUL {

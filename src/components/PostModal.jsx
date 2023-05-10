@@ -1,6 +1,10 @@
 import { Button, Form, Modal } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
-import { CHANGE_SHOW_POST_MODAL, createPost } from "../redux/actions/actions";
+import {
+  CHANGE_EDIT_POST,
+  CHANGE_SHOW_POST_MODAL,
+  createPost,
+} from "../redux/actions/actions";
 import GreyBorderBtn from "./GreyBorderBtn";
 import { SlEmotsmile } from "react-icons/sl";
 import { HiOutlinePhoto, HiDocument } from "react-icons/hi2";
@@ -45,14 +49,31 @@ const PostModal = (props) => {
 
   const accessToken = localStorage.getItem("accessToken");
 
+  const editPostData = useSelector((state) => state.posts.editPost);
+  const editMode = useSelector((state) => state.posts.editMode);
   const showPostModal = useSelector((state) => state.posts.showPostModal);
   const myProfile = useSelector((state) => state.profiles.myProfile);
 
   const [text, setText] = useState("");
   const [postImage, setPostImage] = useState();
 
+  const [editPost, setEditPost] = useState({
+    text: editPostData.text,
+    image: editPostData.image,
+  });
+
   const handleChange = (e) => {
     setText(e.target.value);
+  };
+
+  const handleEdit = (e) => {
+    dispatch({
+      type: CHANGE_EDIT_POST,
+      payload: {
+        text: e.target.value,
+        image: editPostData.image,
+      },
+    });
   };
 
   const handleFileUpload = (e) => {
@@ -64,7 +85,7 @@ const PostModal = (props) => {
   return (
     <Modal {...props} className="post-model">
       <Modal.Header closeButton>
-        <Modal.Title>Create a post</Modal.Title>
+        <Modal.Title>{editMode ? "Edit post" : "Create a post"}</Modal.Title>
       </Modal.Header>
       <Modal.Body>
         <div className="d-flex">
@@ -88,17 +109,22 @@ const PostModal = (props) => {
         >
           <Form.Group controlId="exampleForm.ControlInput1">
             <Form.Control
-              value={text}
+              value={editMode ? editPostData.text : text}
               name="text"
               as="textarea"
               rows={3}
               placeholder="What do you want to talk about?"
               className="post-text"
-              onChange={handleChange}
+              onChange={editMode ? handleEdit : handleChange}
             />
           </Form.Group>
         </Form>
-        {postImage && <img src={URL.createObjectURL(postImage)} />}
+
+        {editMode ? (
+          <img src={editPostData.image} />
+        ) : (
+          postImage && <img src={URL.createObjectURL(postImage)} />
+        )}
         <button className="experience-buttons">
           <SlEmotsmile className="experience-buttons-icon" />
         </button>
@@ -135,6 +161,8 @@ const PostModal = (props) => {
           variant="primary"
           onClick={() => {
             dispatch(createPost(accessToken, text, postImage));
+            setPostImage();
+            setText("");
           }}
         >
           Post
