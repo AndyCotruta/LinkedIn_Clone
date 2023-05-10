@@ -9,6 +9,9 @@ import { useEffect } from "react";
 
 const MainPostsContainer = () => {
   const allPosts = useSelector((state) => state.posts.posts);
+  const sortedPosts = allPosts.sort((a, b) => {
+    return new Date(b.createdAt) - new Date(a.createdAt);
+  });
   return (
     <>
       <Col sm={12} md={9} lg={7}>
@@ -19,10 +22,9 @@ const MainPostsContainer = () => {
             Sort by: <span className="fw-800">Top</span>
           </span>
         </div>
-        {allPosts.length !== 0 &&
-          allPosts?.map((post, i) => (
-            <PostsDisplay post={post} key={post._id} i={i} />
-          ))}
+        {sortedPosts?.map((post, i) => (
+          <PostsDisplay post={post} key={post._id} i={i} />
+        ))}
       </Col>
     </>
   );

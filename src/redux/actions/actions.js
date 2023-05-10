@@ -191,3 +191,59 @@ export const fetchAllProfiles = () => {
     }
   };
 };
+
+export const createPost = (accessToken, postText, postImage) => {
+  return async (dispatch) => {
+    try {
+      const formData = new FormData();
+      formData.append("text", postText);
+      formData.append("postImage", postImage);
+      let response = await fetch("http://localhost:3001/posts", {
+        method: "POST",
+        headers: {
+          Authorization: `Bearer ${accessToken}`,
+        },
+        body: formData,
+      });
+      if (response.ok) {
+        dispatch(fetchPosts());
+        dispatch({
+          type: CHANGE_SHOW_POST_MODAL,
+          payload: false,
+        });
+      } else {
+        console.log("Errors while creating new post");
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+};
+
+export const editPost = (accessToken, postId, postText, postImage) => {
+  return async (dispatch) => {
+    try {
+      const formData = new FormData();
+      formData.append("text", postText);
+      formData.append("postImage", postImage);
+      let response = await fetch(`http://localhost:3001/posts/` + postId, {
+        method: "PUT",
+        headers: {
+          Authorization: `Bearer ${accessToken}`,
+        },
+        body: formData,
+      });
+      if (response.ok) {
+        dispatch(fetchPosts());
+        dispatch({
+          type: CHANGE_SHOW_POST_MODAL,
+          payload: false,
+        });
+      } else {
+        console.log("Errors while creating new post");
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+};
