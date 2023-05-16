@@ -57,8 +57,9 @@ const PostsDisplay = (props) => {
                   dispatch({
                     type: CHANGE_EDIT_POST,
                     payload: {
+                      id: props.post._id,
                       text: props.post.text,
-                      image: props.post.image,
+                      postImage: props.post.image,
                     },
                   });
                   dispatch({
@@ -67,7 +68,7 @@ const PostsDisplay = (props) => {
                   });
                   dispatch({
                     type: CHANGE_SHOW_POST_MODAL,
-                    payload: !showPostModal,
+                    payload: true,
                   });
                 }}
               >

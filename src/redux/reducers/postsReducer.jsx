@@ -1,5 +1,6 @@
 import {
   ADD_ALL_POSTS,
+  CHANGE_CREATE_POST,
   CHANGE_EDIT_POST,
   CHANGE_POST_MODAL_EDIT_MODE,
   CHANGE_SHOW_POST_MODAL,
@@ -9,6 +10,10 @@ const initialState = {
   posts: [],
   showPostModal: false,
   editMode: false,
+  createPost: {
+    text: "",
+    postImage: "",
+  },
   editPost: {},
 };
 
@@ -37,6 +42,12 @@ const postsReducer = (state = initialState, action) => {
       return {
         ...state,
         editPost: action.payload,
+      };
+    }
+    case CHANGE_CREATE_POST: {
+      return {
+        ...state,
+        createPost: action.payload,
       };
     }
 

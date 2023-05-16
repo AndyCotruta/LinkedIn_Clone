@@ -38,7 +38,7 @@ const WritePost = () => {
           onClick={() => {
             dispatch({
               type: CHANGE_SHOW_POST_MODAL,
-              payload: !showPostModal,
+              payload: true,
             });
           }}
         >

@@ -2,6 +2,7 @@ export const ADD_ALL_POSTS = "ADD_ALL_POSTS";
 export const CHANGE_SHOW_POST_MODAL = "CHANGE_SHOW_POST_MODAL";
 export const CHANGE_POST_MODAL_EDIT_MODE = "CHANGE_POST_MODAL_EDIT_MODE";
 export const CHANGE_EDIT_POST = "CHANGE_EDIT_POST";
+export const CHANGE_CREATE_POST = "CHANGE_CREATE_POST";
 
 export const ADD_ALL_PROFILES = "ADD_ALL_PROFILES";
 export const ADD_CLICKED_PROFILE = "ADD_CLICKED_PROFILE";
@@ -228,6 +229,7 @@ export const editPost = (accessToken, postId, postText, postImage) => {
       const formData = new FormData();
       formData.append("text", postText);
       formData.append("postImage", postImage);
+      console.log(postImage);
       let response = await fetch(`http://localhost:3001/posts/` + postId, {
         method: "PUT",
         headers: {
@@ -236,13 +238,14 @@ export const editPost = (accessToken, postId, postText, postImage) => {
         body: formData,
       });
       if (response.ok) {
+        console.log("Response ok");
         dispatch(fetchPosts());
         dispatch({
           type: CHANGE_SHOW_POST_MODAL,
           payload: false,
         });
       } else {
-        console.log("Errors while creating new post");
+        console.log("Errors while updating post");
       }
     } catch (error) {
       console.log(error);

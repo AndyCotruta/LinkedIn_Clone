@@ -4,8 +4,10 @@ import {
   CHANGE_EDIT_POST,
   CHANGE_SHOW_POST_MODAL,
   createPost,
+  editPost,
 } from "../redux/actions/actions";
 import GreyBorderBtn from "./GreyBorderBtn";
+import BlueButton from "./BlueButton";
 import { SlEmotsmile } from "react-icons/sl";
 import { HiOutlinePhoto, HiDocument } from "react-icons/hi2";
 import { IoLogoYoutube } from "react-icons/io";
@@ -20,7 +22,7 @@ const icon = (
     viewBox="0 0 16 16"
     data-supported-dps="16x16"
     fill="currentColor"
-    class="mercado-match"
+    className="mercado-match"
     width="16"
     height="16"
     focusable="false"
@@ -35,12 +37,12 @@ const iconTwo = (
     viewBox="0 0 16 16"
     data-supported-dps="16x16"
     fill="currentColor"
-    class="mercado-match"
+    className="mercado-match"
     width="16"
     height="16"
     focusable="false"
   >
-    <path d="M8 11L3 6h10z" fill-rule="evenodd"></path>
+    <path d="M8 11L3 6h10z" fillRule="evenodd"></path>
   </svg>
 );
 
@@ -51,41 +53,51 @@ const PostModal = (props) => {
 
   const editPostData = useSelector((state) => state.posts.editPost);
   const editMode = useSelector((state) => state.posts.editMode);
-  const showPostModal = useSelector((state) => state.posts.showPostModal);
   const myProfile = useSelector((state) => state.profiles.myProfile);
 
   const [text, setText] = useState("");
   const [postImage, setPostImage] = useState();
 
-  const [editPost, setEditPost] = useState({
+  const [editData, setEditData] = useState({
+    id: editPostData.id,
     text: editPostData.text,
-    image: editPostData.image,
+    image: editPostData.postImage,
   });
+
+  function handleEditData(event) {
+    dispatch({
+      type: CHANGE_EDIT_POST,
+      payload: {
+        ...editPostData,
+        text: event.target.value,
+      },
+    });
+  }
 
   const handleChange = (e) => {
     setText(e.target.value);
   };
 
-  const handleEdit = (e) => {
-    dispatch({
-      type: CHANGE_EDIT_POST,
-      payload: {
-        text: e.target.value,
-        image: editPostData.image,
-      },
-    });
-  };
-
-  const handleFileUpload = (e) => {
+  const handleImageUpload = (e) => {
     if (e.target.files) {
       setPostImage(e.target.files[0]);
     }
   };
 
+  const handleImageChange = (e) => {
+    console.log("Selecting image...");
+    console.log(URL.createObjectURL(e.target.files[0]));
+    setEditData({
+      ...editData,
+      image: e.target.files[0],
+    });
+    console.log(editData);
+  };
+
   return (
     <Modal {...props} className="post-model">
       <Modal.Header closeButton>
-        <Modal.Title>{editMode ? "Edit post" : "Create a post"}</Modal.Title>
+        <Modal.Title>{editMode ? `Edit post` : "Create a post"}</Modal.Title>
       </Modal.Header>
       <Modal.Body>
         <div className="d-flex">
@@ -115,30 +127,27 @@ const PostModal = (props) => {
               rows={3}
               placeholder="What do you want to talk about?"
               className="post-text"
-              onChange={editMode ? handleEdit : handleChange}
+              onChange={editMode ? handleEditData : handleChange}
+            />
+            <Form.Control
+              filename={editMode ? `${editData.image}` : `${postImage}`}
+              name="image"
+              onChange={editMode ? handleImageChange : handleImageUpload}
+              type="file"
+              placeholder=""
             />
           </Form.Group>
         </Form>
 
-        {editMode ? (
-          <img src={editPostData.image} />
-        ) : (
-          postImage && <img src={URL.createObjectURL(postImage)} />
-        )}
         <button className="experience-buttons">
           <SlEmotsmile className="experience-buttons-icon" />
         </button>
       </Modal.Body>
       <Modal.Footer>
-        <label htmlFor="file-upload" className="d-flex experience-buttons">
+        <button className="experience-buttons">
           <HiOutlinePhoto className="experience-buttons-icon" />
-          <input
-            type="file"
-            id="file-upload"
-            style={{ display: "none" }}
-            onChange={handleFileUpload}
-          />
-        </label>
+        </button>
+
         <button className="experience-buttons">
           <IoLogoYoutube className="experience-buttons-icon" />
         </button>
@@ -157,16 +166,34 @@ const PostModal = (props) => {
         <button className="experience-buttons">
           <BsThreeDots className="experience-buttons-icon" />
         </button>
-        <Button
-          variant="primary"
-          onClick={() => {
-            dispatch(createPost(accessToken, text, postImage));
-            setPostImage();
-            setText("");
-          }}
-        >
-          Post
-        </Button>
+        {editMode ? (
+          <div
+            onClick={() => {
+              dispatch(
+                editPost(
+                  accessToken,
+                  editPostData.id,
+                  editPostData.text,
+                  editData.image
+                )
+              );
+            }}
+          >
+            {" "}
+            <BlueButton text={"Update"} />
+          </div>
+        ) : (
+          <Button
+            variant="primary"
+            onClick={() => {
+              setPostImage();
+              setText("");
+              dispatch(createPost(accessToken, text, postImage));
+            }}
+          >
+            Post
+          </Button>
+        )}
       </Modal.Footer>
     </Modal>
   );
