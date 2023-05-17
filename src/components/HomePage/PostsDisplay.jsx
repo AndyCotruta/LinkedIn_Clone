@@ -7,6 +7,7 @@ import {
   CHANGE_POST_MODAL_EDIT_MODE,
   CHANGE_SHOW_POST_MODAL,
   deletePost,
+  likePost,
 } from "../../redux/actions/actions";
 import PostModal from "../PostModal";
 import { useDispatch, useSelector } from "react-redux";
@@ -101,12 +102,15 @@ const PostsDisplay = (props) => {
             style={{ width: "100%", height: "100%", objectFit: "cover" }}
           />
         </div>
-
+        <div>{props.post.likes.length} likes</div>
         <div style={{ marginBlockStart: "40px" }}>
           <div className="like-box-feed wrapper my-1 fs-14 fw-800 mx-3">
             <button
               aria-label="Add a photo"
               className="d-flex align-items-center justify-content-center share-box-btn  py-2 px-1 my-1 width-hover"
+              onClick={() => {
+                dispatch(likePost(accessToken, props.post._id));
+              }}
             >
               <img src={like} alt="" />
               <span className="share-box-btn-text  ml-2 fs-16">Like</span>

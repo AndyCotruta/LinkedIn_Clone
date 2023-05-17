@@ -3,6 +3,7 @@ export const CHANGE_SHOW_POST_MODAL = "CHANGE_SHOW_POST_MODAL";
 export const CHANGE_POST_MODAL_EDIT_MODE = "CHANGE_POST_MODAL_EDIT_MODE";
 export const CHANGE_EDIT_POST = "CHANGE_EDIT_POST";
 export const CHANGE_CREATE_POST = "CHANGE_CREATE_POST";
+export const CHANGE_TARGET_POST = "CHANGE_TARGET_POST";
 
 export const ADD_ALL_PROFILES = "ADD_ALL_PROFILES";
 export const ADD_CLICKED_PROFILE = "ADD_CLICKED_PROFILE";
@@ -266,6 +267,30 @@ export const deletePost = (accessToken, postId) => {
         dispatch(fetchPosts());
       } else {
         console.log("Error while deleting the post");
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+};
+
+export const likePost = (accessToken, postId) => {
+  return async (dispatch) => {
+    try {
+      let response = await fetch(
+        `http://localhost:3001/posts/${postId}/likes`,
+        {
+          method: "PUT",
+          headers: {
+            Authorization: `Bearer ${accessToken}`,
+          },
+        }
+      );
+      if (response.ok) {
+        let data = await response.json();
+        dispatch({ type: CHANGE_TARGET_POST, payload: data });
+      } else {
+        console.log("Error while liking post");
       }
     } catch (error) {
       console.log(error);

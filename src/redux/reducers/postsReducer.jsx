@@ -4,6 +4,7 @@ import {
   CHANGE_EDIT_POST,
   CHANGE_POST_MODAL_EDIT_MODE,
   CHANGE_SHOW_POST_MODAL,
+  CHANGE_TARGET_POST,
 } from "../actions/actions";
 
 const initialState = {
@@ -48,6 +49,19 @@ const postsReducer = (state = initialState, action) => {
       return {
         ...state,
         createPost: action.payload,
+      };
+    }
+    case CHANGE_TARGET_POST: {
+      const updatedPosts = state.posts.map((post) => {
+        if (post._id === action.payload._id) {
+          return action.payload;
+        }
+        return post;
+      });
+
+      return {
+        ...state,
+        posts: updatedPosts,
       };
     }
 
