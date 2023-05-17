@@ -31,7 +31,7 @@ const PostsDisplay = (props) => {
             />
           </div>
           <div className="flex-grow-1">
-            <span className="fs-14 fw-700 mr-2">
+            <span className="fs-14 fw-700 mr-1">
               {props.post.user.firstName}
             </span>
             <span className="fs-14 fw-700 mr-2">
