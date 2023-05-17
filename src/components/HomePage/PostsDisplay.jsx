@@ -6,6 +6,7 @@ import {
   CHANGE_EDIT_POST,
   CHANGE_POST_MODAL_EDIT_MODE,
   CHANGE_SHOW_POST_MODAL,
+  deletePost,
 } from "../../redux/actions/actions";
 import PostModal from "../PostModal";
 import { useDispatch, useSelector } from "react-redux";
@@ -18,6 +19,7 @@ const PostsDisplay = (props) => {
   const myProfile = useSelector((state) => state.profiles.myProfile);
   const showPostModal = useSelector((state) => state.posts.showPostModal);
   const [showPostOptions, setShowPostOptions] = useState(false);
+  const accessToken = localStorage.getItem("accessToken");
 
   return (
     <>
@@ -75,7 +77,14 @@ const PostsDisplay = (props) => {
                 Edit
               </div>
               <div className="post-options">Report</div>
-              <div className="post-options">Delete</div>
+              <div
+                className="post-options"
+                onClick={() => {
+                  dispatch(deletePost(accessToken, props.post._id));
+                }}
+              >
+                Delete
+              </div>
             </div>
           )}
         </div>

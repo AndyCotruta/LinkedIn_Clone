@@ -252,3 +252,23 @@ export const editPost = (accessToken, postId, postText, postImage) => {
     }
   };
 };
+
+export const deletePost = (accessToken, postId) => {
+  return async (dispatch) => {
+    try {
+      let response = await fetch(`http://localhost:3001/posts/` + postId, {
+        method: "DELETE",
+        headers: {
+          Authorization: `Bearer ${accessToken}`,
+        },
+      });
+      if (response.ok) {
+        dispatch(fetchPosts());
+      } else {
+        console.log("Error while deleting the post");
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+};
