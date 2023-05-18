@@ -13,6 +13,7 @@ import PostModal from "../PostModal";
 import { useDispatch, useSelector } from "react-redux";
 import { SlOptions } from "react-icons/sl";
 import { useState } from "react";
+import CommentField from "../CommentField";
 
 const PostsDisplay = (props) => {
   const dispatch = useDispatch();
@@ -102,8 +103,12 @@ const PostsDisplay = (props) => {
             style={{ width: "100%", height: "100%", objectFit: "cover" }}
           />
         </div>
-        <div>{props.post.likes.length} likes</div>
-        <div style={{ marginBlockStart: "40px" }}>
+        <div className="d-flex justify-content-between px-3 py-3">
+          <div>{props.post.likes.length} likes</div>
+          <div>{props.post.comments.length} comments</div>
+        </div>
+
+        <div>
           <div className="like-box-feed wrapper my-1 fs-14 fw-800 mx-3">
             <button
               aria-label="Add a photo"
@@ -142,6 +147,7 @@ const PostsDisplay = (props) => {
             </button>
           </div>
         </div>
+        <CommentField comments={props.post.comments}/>
       </div>
     </>
   );
