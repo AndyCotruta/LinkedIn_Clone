@@ -36,10 +36,6 @@ body {
   background-color: var(--linkedin-white-grey) !important;
 }
 
-.container {
-  max-width: 1128px !important;
-}
-
 .profile-main {
   /* width: 782px; */
   border-radius: 10px;
@@ -682,50 +678,6 @@ a {
   width: 60px;
 }
 
-@media screen and (max-width: 1000px) {
-  /* .navbar-nav {
-    display: flex;
-    flex-direction: row;
-    padding-left: 0;
-    margin-bottom: 0;
-    list-style: none;
-  } */
-
-  .menu-on-collapse {
-    display: flex;
-    flex-direction: column;
-    transition: 1s;
-  }
-
-  .elapsed-menu {
-    background-color: white;
-    padding: 10px;
-    box-shadow: 6px 7px 10px -4px grey;
-    border-radius: 0 0 10px 10px;
-    border: 1px solid gray;
-  }
-
-  .logo-on-collapse {
-    align-items: baseline !important;
-  }
-
-  .work {
-    border-top: solid 0.5px grey;
-    border-left: solid 0.5px transparent;
-  }
-
-  .profile-picture-mini img {
-    transform: translateX(50%);
-    left: 40%;
-  }
-
-  .form-inline {
-    display: none;
-  }
-  .profile-text-mini {
-    display: none !important;
-  }
-}
 /* ............................................LogIn............................................. */
 .login-container {
   display: flex;
@@ -821,23 +773,6 @@ a {
 }
 
 /* .........................................Buttons.............................................. */
-
-/* .........................................Responsive Design.................................... */
-
-@media screen and (max-width: 768px) {
-  .login-container {
-    display: flex;
-    flex-direction: column;
-  }
-  .login-welcome-text {
-    font-size: 2rem;
-  }
-  .login-name-container {
-    flex-direction: column;
-  }
-}
-
-/* .........................................Responsive Design.................................... */
 
 .modal-footer {
   flex-wrap: nowrap;
@@ -1010,30 +945,6 @@ a {
   top: 60px;
 }
 
-@media screen and (max-width: 1000px) {
-  .collapse-hide {
-    display: none !important;
-  }
-
-  .left-profile-mini {
-    height: 150px;
-    border-radius: 10px;
-    margin-block-end: 20px;
-    border: 1px solid var(--linkedin-white-grey);
-  }
-  .profile-text-mini {
-    border-bottom: 1px solid transparent;
-  }
-
-  .navbar-toggler {
-    border: none;
-  }
-
-  .username-mini {
-    cursor: pointer;
-  }
-}
-
 /* ........................................Left Side Bar........................................... */
 
 /* ........................................Search Modal............................................ */
@@ -1145,13 +1056,18 @@ a {
 /* ........................................Main Footer.............................................. */
 
 /* ........................................Main Navbar............................................... */
+
+.container {
+  max-width: 1128px !important;
+}
+
 .navbar-main {
   background-color: var(--linkedin-white);
   display: flex;
-  align-items: baseline;
+  align-items: center;
   justify-content: center;
   padding: 0;
-  margin-block-end: 20px;
+  margin-bottom: 1rem;
   position: sticky !important;
   top: 0px;
   z-index: 1;
@@ -1172,6 +1088,16 @@ a {
 
 .profile-name {
   font-size: 12px;
+}
+
+.work-text {
+  color: var(--linkedin-dark-grey);
+  font-size: 12px;
+}
+
+.work-text:hover {
+  cursor: pointer;
+  color: black;
 }
 
 .profile-icon {
@@ -1201,9 +1127,6 @@ a {
 .dropdown-toggle {
   padding: 0 !important;
 }
-/* color: #fff; */
-/* background-color: #007bff; */
-/* border-color: #007bff; */
 
 .nav-li-icon {
   color: var(--linkedin-dark-blue);
@@ -1231,8 +1154,9 @@ a {
   outline: none !important;
 }
 
-.search-position {
+.search-container {
   position: relative;
+  display: none;
 }
 
 .nav-menu-icon {
@@ -1249,6 +1173,9 @@ a {
 
 .premium {
   color: var(--linkedin-brown);
+  display: flex;
+  flex-direction: column;
+  font-size: 10px;
 }
 
 .menu-size:hover .nav-menu-icon {
@@ -1285,4 +1212,37 @@ a {
   padding-left: 1rem;
 }
 
+.search-small-screens {
+  position: absolute;
+  background-color: white;
+  width: 100%;
+}
+
 /* ........................................Main Navbar............................................... */
+
+/* .........................................Responsive Design.................................... */
+
+@media screen and (max-width: 768px) {
+  .login-container {
+    display: flex;
+    flex-direction: column;
+  }
+  .login-welcome-text {
+    font-size: 2rem;
+  }
+  .login-name-container {
+    flex-direction: column;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .search-icon {
+    display: none;
+  }
+
+  .search-container {
+    display: block;
+  }
+}
+
+/* .........................................Responsive Design.................................... */
