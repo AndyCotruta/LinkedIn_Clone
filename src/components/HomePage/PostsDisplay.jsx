@@ -22,6 +22,7 @@ const PostsDisplay = (props) => {
   const showPostModal = useSelector((state) => state.posts.showPostModal);
   const [showPostOptions, setShowPostOptions] = useState(false);
   const accessToken = localStorage.getItem("accessToken");
+  const [showComments, setShowComments] = useState(false);
 
   return (
     <>
@@ -123,6 +124,9 @@ const PostsDisplay = (props) => {
             <button
               aria-label="Add a video"
               className="d-flex align-items-center justify-content-center share-box-btn py-2 px-1 my-1 width-hover"
+              onClick={() => {
+                setShowComments(!showComments);
+              }}
             >
               <img src={comment} alt="" />
               <span className="share-box-btn-text  ml-2 fs-16">Comment</span>
@@ -147,7 +151,12 @@ const PostsDisplay = (props) => {
             </button>
           </div>
         </div>
-        <CommentField comments={props.post.comments} postId={props.post._id} />
+        {showComments && (
+          <CommentField
+            comments={props.post.comments}
+            postId={props.post._id}
+          />
+        )}
       </div>
     </>
   );

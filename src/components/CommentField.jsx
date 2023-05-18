@@ -55,14 +55,16 @@ function CommentField({ comments, postId }) {
         {comments.slice(0, numberOfComments).map((comment) => (
           <OneComment key={comment._id} comment={comment} />
         ))}
-        <div
-          className="load-more-comments"
-          onClick={() => {
-            setNumberOfComments(numberOfComments + 2);
-          }}
-        >
-          Load more comments
-        </div>
+        {numberOfComments < comments.length && (
+          <div
+            className="load-more-comments"
+            onClick={() => {
+              setNumberOfComments(numberOfComments + 2);
+            }}
+          >
+            Load more comments
+          </div>
+        )}
       </div>
     </div>
   );
