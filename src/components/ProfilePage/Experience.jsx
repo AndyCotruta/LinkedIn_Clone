@@ -6,7 +6,7 @@ import {
   GET_EXPERIENCE,
   ADD_CURRENT_EXP_DATA,
   ADD_EXPERIENCE,
-} from "../redux/actions/actions";
+} from "../../redux/actions/actions";
 import { useDispatch, useSelector } from "react-redux";
 import { HiOutlinePlus } from "react-icons/hi";
 import { HiOutlinePencil, HiTrash } from "react-icons/hi";

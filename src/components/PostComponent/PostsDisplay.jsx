@@ -9,11 +9,10 @@ import {
   deletePost,
   likePost,
 } from "../../redux/actions/actions";
-import PostModal from "../PostModal";
 import { useDispatch, useSelector } from "react-redux";
 import { SlOptions } from "react-icons/sl";
 import { useState } from "react";
-import CommentField from "../CommentField";
+import CommentField from "./CommentField";
 
 const PostsDisplay = (props) => {
   const dispatch = useDispatch();

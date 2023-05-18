@@ -1,5 +1,5 @@
 import { useSelector } from "react-redux";
-import BlueBorderBtn from "./BlueBorderBtn";
+import BlueBorderBtn from "../../Buttons/BlueBorderBtn";
 
 const ProfileAd = () => {
   const myProfile = useSelector((state) => state.profiles.myProfile);

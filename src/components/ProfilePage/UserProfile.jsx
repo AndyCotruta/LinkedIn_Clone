@@ -8,12 +8,12 @@ import Activity from "./Activity";
 import AboutUser from "./AboutUser";
 import ProfileSection from "./ProfileSection";
 import { Col } from "react-bootstrap";
-import RightSideBar from "./RightSideBar";
-import MainFooter from "./MainFooter";
+import RightSideBar from "../HomePage/RightSideBar/RightSideBar";
+import MainFooter from "../HomePage/MainFooter";
 import { useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
-import { fetchProfile, GET_EXPERIENCE } from "../redux/actions/actions";
+import { fetchProfile, GET_EXPERIENCE } from "../../redux/actions/actions";
 
 const UserProfile = () => {
   const params = useParams();

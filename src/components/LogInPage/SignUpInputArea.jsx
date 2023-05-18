@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import BlueButton from "../BlueButton";
+import BlueButton from "../Buttons/BlueButton";
 
 function SignUpInputArea() {
   const navigate = useNavigate();

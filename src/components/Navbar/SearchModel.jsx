@@ -1,8 +1,8 @@
 import React from "react";
-import "./SearchModel.css";
-import search from "../Icon/Search.svg";
+
+import search from "../../Icon/Search.svg";
 import { useNavigate } from "react-router-dom";
-import { ADD_CLICKED_PROFILE, fetchProfile } from "../redux/actions/actions";
+import { ADD_CLICKED_PROFILE, fetchProfile } from "../../redux/actions/actions";
 import { useDispatch } from "react-redux";
 
 const SearchModel = (props) => {

@@ -1,8 +1,4 @@
 import React from "react";
-import { useState } from "react";
-import { Form, InputGroup } from "react-bootstrap";
-import { useNavigate } from "react-router-dom";
-import BlueButton from "../BlueButton";
 import LoginInputArea from "./LoginInputArea";
 import SignUpInputArea from "./SignUpInputArea";
 

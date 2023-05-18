@@ -944,3 +944,345 @@ a {
   background-color: var(--linkedin-bg-off-white);
 }
 /* ........................................Comment Field.......................................... */
+
+/* ........................................Left Side Bar........................................... */
+
+.profile-cover-mini img {
+  height: 56px;
+  width: 100%;
+  object-fit: cover;
+  position: relative;
+  border-radius: 10px 10px 0 0;
+}
+
+.profile-picture-mini img {
+  position: absolute;
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  border: 2px solid var(--linkedin-white);
+  top: 20px;
+
+  transform: translateX(60%);
+
+  cursor: pointer;
+}
+
+.left-profile-mini {
+  background-color: var(--linkedin-white);
+  border-radius: 0 0 10px 10px;
+  border: solid 1px var(--linkedin-white-grey);
+}
+
+.profile-text-mini {
+  display: flex !important;
+  flex-direction: column;
+  align-items: center;
+  margin-block-start: 45px;
+  padding-block-end: 25px;
+  border-bottom: 1px solid var(--linkedin-white-grey);
+}
+
+.profile-text-mini2 {
+  display: flex !important;
+  flex-direction: column;
+  align-items: center;
+  padding-block: 10px;
+  background-color: white;
+  border-radius: 0 0 10px 10px;
+  border: solid 1px var(--linkedin-white-grey);
+  border-top: solid 1px transparent;
+  cursor: pointer;
+  position: sticky;
+  top: 222px;
+}
+.profile-text-mini2:hover {
+  background-color: rgb(245, 245, 245);
+}
+
+.secondary-side-nav {
+  background-color: white;
+  border-radius: 10px 10px 0 0;
+  padding: 15px;
+  border-bottom: 1px solid var(--linkedin-white-grey);
+  border: solid 1px var(--linkedin-white-grey);
+  position: sticky;
+  top: 60px;
+}
+
+@media screen and (max-width: 1000px) {
+  .collapse-hide {
+    display: none !important;
+  }
+
+  .left-profile-mini {
+    height: 150px;
+    border-radius: 10px;
+    margin-block-end: 20px;
+    border: 1px solid var(--linkedin-white-grey);
+  }
+  .profile-text-mini {
+    border-bottom: 1px solid transparent;
+  }
+
+  .navbar-toggler {
+    border: none;
+  }
+
+  .username-mini {
+    cursor: pointer;
+  }
+}
+
+/* ........................................Left Side Bar........................................... */
+
+/* ........................................Search Modal............................................ */
+
+.search-model {
+  position: absolute;
+  left: 0;
+  top: 45px;
+  border: 1px solid var(--linkedin-white-grey);
+  width: 420px;
+  background-color: white;
+  border-radius: 10px;
+  padding-block: 15px;
+}
+
+.search-image {
+  width: 30px;
+  height: 30px;
+  object-fit: cover;
+  border-radius: 50%;
+  margin-inline-end: 15px;
+}
+
+.search-results {
+  cursor: pointer;
+  padding-block: 5px;
+}
+.search-results:hover {
+  background-color: rgb(237, 237, 237);
+}
+
+.career {
+  width: 220px;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+/* ........................................Search Modal............................................ */
+
+/* ........................................Main Footer.............................................. */
+
+.footer-main {
+  display: flex;
+  font-size: 12px;
+  font-weight: 700;
+  margin-block-end: 30px;
+  line-height: 30px;
+  color: gray;
+  justify-content: space-between;
+}
+.list-group-item {
+  position: relative;
+  background: transparent;
+  border: none;
+  padding: none;
+  font-size: 12px;
+  line-height: 10px;
+  font-weight: 500;
+}
+.DropdownButton {
+  position: relative;
+  background: transparent;
+  border: none;
+  padding: none;
+  font-size: 12px;
+  line-height: 10px;
+  font-weight: 500;
+}
+
+.select-language {
+  width: 300px;
+  margin: 0 auto;
+}
+
+.select-language-form button {
+  width: 100%;
+  text-align: left;
+  background-color: white;
+  color: gray;
+  border: none;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border: 1px solid gray;
+  padding-inline: 10px !important;
+  font-size: 12px;
+  height: 32px;
+  font-weight: 900;
+  font-family: inherit;
+}
+
+.show > .btn-primary.dropdown-toggle {
+  color: #000 !important;
+  background-color: #ffffff !important;
+  border-color: #282828 !important;
+}
+
+.btn-primary:hover {
+  color: #000 !important;
+  background-color: #ffffff !important;
+  border-color: #282828 !important;
+}
+
+.questions {
+  line-height: 20px;
+}
+
+/* ........................................Main Footer.............................................. */
+
+/* ........................................Main Navbar............................................... */
+.navbar-main {
+  background-color: var(--linkedin-white);
+  display: flex;
+  align-items: baseline;
+  justify-content: center;
+  padding: 0;
+  margin-block-end: 20px;
+  position: sticky !important;
+  top: 0px;
+  z-index: 1;
+  height: 53px;
+}
+.nav-view-profile-btn {
+  cursor: pointer;
+  width: 220px;
+  height: 30px;
+  display: flex !important;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50px !important;
+  color: var(--linkedin-dark-blue) !important;
+  background-color: var(--linkedin-white) !important;
+  border-color: var(--linkedin-dark-blue) !important;
+}
+
+.profile-name {
+  font-size: 12px;
+}
+
+.profile-icon {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+.work-icon {
+  width: 24px;
+  height: 24px;
+}
+
+.menu-size {
+  width: 80px;
+  height: 53px;
+  display: flex;
+  justify-content: center;
+}
+
+.profile-drop-down {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.dropdown-toggle {
+  padding: 0 !important;
+}
+/* color: #fff; */
+/* background-color: #007bff; */
+/* border-color: #007bff; */
+
+.nav-li-icon {
+  color: var(--linkedin-dark-blue);
+  height: 2em !important;
+  margin-right: 0.5em;
+}
+.nav-icon {
+  color: var(--linkedin-grey);
+}
+
+.logo-mini {
+  width: 40px;
+}
+.logo-mini img {
+  width: 35px;
+  height: 35px;
+  cursor: pointer;
+}
+
+.search-input {
+  width: 280px !important;
+  height: 35px !important;
+  background-color: #eef3f8 !important;
+  border: none !important;
+  outline: none !important;
+}
+
+.search-position {
+  position: relative;
+}
+
+.nav-menu-icon {
+  width: 24px;
+  filter: brightness(2.2);
+}
+
+.nav-text {
+  color: #777575;
+}
+.nav-text:hover {
+  color: #000000;
+}
+
+.premium {
+  color: var(--linkedin-brown);
+}
+
+.menu-size:hover .nav-menu-icon {
+  filter: brightness(1);
+}
+.menu-size:hover .nav-text {
+  color: #000000;
+}
+
+.dropdown-menu {
+  width: 234px;
+  left: -180px !important;
+  top: 25px !important;
+  border-radius: 10px 0 10px 10px !important;
+  box-shadow: 4px 7px 6px -4px grey;
+}
+
+.profile-icon2 {
+  width: 60px;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+.work {
+  border-left: solid 0.5px grey;
+}
+
+.login-buttons {
+  border-left: 2px solid var(--linkedin-grey);
+  height: 40px;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding-left: 1rem;
+}
+
+/* ........................................Main Navbar............................................... */

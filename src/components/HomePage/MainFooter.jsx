@@ -1,11 +1,20 @@
-import { Navbar, Col, Row, Container, NavItem, ListGroup, ListGroupItem, DropdownButton, Dropdown } from "react-bootstrap";
+import {
+  Navbar,
+  Col,
+  Row,
+  Container,
+  NavItem,
+  ListGroup,
+  ListGroupItem,
+  DropdownButton,
+  Dropdown,
+} from "react-bootstrap";
 import { Nav } from "react-bootstrap/esm";
 import { BsQuestionCircleFill } from "react-icons/bs";
 import { MdSettings } from "react-icons/md";
-import "./MainFooter.css";
-import question from "../Icon/Exclude.svg";
-import settings from "../Icon/settings.svg";
-import logo from "../Icon/Logo.svg";
+import question from "../../Icon/Exclude.svg";
+import settings from "../../Icon/settings.svg";
+import logo from "../../Icon/Logo.svg";
 
 const MainFooter = () => {
   return (
@@ -56,7 +65,10 @@ const MainFooter = () => {
         <ListGroup className="select-language">
           <p className="fs-12 mb-1">Select language</p>
 
-          <DropdownButton className="DropdownButton select-language-form " title="English">
+          <DropdownButton
+            className="DropdownButton select-language-form "
+            title="English"
+          >
             <Dropdown.Item eventKey="1">Polski</Dropdown.Item>
             <Dropdown.Item eventKey="2">Spanish</Dropdown.Item>
           </DropdownButton>

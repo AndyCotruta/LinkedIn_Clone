@@ -1,5 +1,5 @@
 import WritePost from "./WritePost";
-import PostsDisplay from "./PostsDisplay";
+import PostsDisplay from "../PostComponent/PostsDisplay";
 
 import { Col } from "react-bootstrap";
 
@@ -10,7 +10,7 @@ import {
   CHANGE_POST_MODAL_EDIT_MODE,
   CHANGE_SHOW_POST_MODAL,
 } from "../../redux/actions/actions";
-import PostModal from "../PostModal";
+import PostModal from "../PostComponent/PostModal";
 
 const MainPostsContainer = () => {
   const dispatch = useDispatch();

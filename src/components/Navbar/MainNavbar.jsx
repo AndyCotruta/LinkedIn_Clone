@@ -7,18 +7,17 @@ import {
   Button,
   Container,
 } from "react-bootstrap";
-import "./MainNavbar.css";
-import logomini from "../Icon/Logo-nav.svg";
-import home from "../Icon/Home.svg";
-import mynetwork from "../Icon/myNetwork.svg";
-import jobs from "../Icon/jobs.svg";
-import message from "../Icon/Message.svg";
-import notification from "../Icon/notification.svg";
-import work from "../Icon/work.svg";
+import logomini from "../../Icon/Logo-nav.svg";
+import home from "../../Icon/Home.svg";
+import mynetwork from "../../Icon/myNetwork.svg";
+import jobs from "../../Icon/jobs.svg";
+import message from "../../Icon/Message.svg";
+import notification from "../../Icon/notification.svg";
+import work from "../../Icon/work.svg";
 import { useNavigate } from "react-router-dom";
-import SearchModel from "./SearchModel";
-import BlueBorderBtn from "./BlueBorderBtn";
-import BlueButton from "./BlueButton";
+import SearchModel from "../Navbar/SearchModel";
+import BlueBorderBtn from "../Buttons/BlueBorderBtn";
+import BlueButton from "../Buttons/BlueButton";
 // import { ADD_QUERY, ADD_SEARCH_RESULTS, CHANGE_CLICKED_SEARCH_STATUS } from "../redux/actions/actions";
 import {
   ADD_CLICKED_PROFILE,
@@ -26,7 +25,7 @@ import {
   ADD_QUERY,
   ADD_SEARCH_RESULTS,
   CHANGE_CLICKED_SEARCH_STATUS,
-} from "../redux/actions/actions";
+} from "../../redux/actions/actions";
 
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState } from "react";

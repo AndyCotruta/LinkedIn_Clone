@@ -11,8 +11,8 @@ import {
   editProfile,
   fetchProfile,
   GET_EXPERIENCE,
-} from "../redux/actions/actions";
-import BlueButton from "./BlueButton";
+} from "../../redux/actions/actions";
+import BlueButton from "../Buttons/BlueButton";
 
 const ExperienceModal = ({
   setShowModal,

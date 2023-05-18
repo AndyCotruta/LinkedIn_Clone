@@ -1,16 +1,10 @@
-import { Col, Container } from "react-bootstrap";
+import { Col } from "react-bootstrap";
 import EditLi from "./EditLi";
 import ActionLi from "./ActionLi";
 import ProfileAd from "./ProfileAd";
 import ProfilesLi from "./ProfilesLi";
 import CoursesLi from "./CoursesLi";
-import { useDispatch, useSelector } from "react-redux";
-import { useEffect } from "react";
-import {
-  ADD_ALL_PROFILES,
-  fetchAllProfiles,
-  fetchProfile,
-} from "../redux/actions/actions";
+import { useSelector } from "react-redux";
 
 const messageIcon = (
   <svg

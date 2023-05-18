@@ -1,7 +1,7 @@
-import RightSideBar from "../RightSideBar";
+import RightSideBar from "./RightSideBar/RightSideBar";
 import MainPostsContainer from "./MainPostsContainer";
 import { Col } from "react-bootstrap";
-import LeftSidebar from "./LeftSidebar";
+import LeftSidebar from "./LeftSideBar/LeftSidebar";
 import { useDispatch, useSelector } from "react-redux";
 import {
   ADD_ALL_POSTS,

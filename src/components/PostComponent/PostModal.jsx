@@ -5,9 +5,9 @@ import {
   CHANGE_SHOW_POST_MODAL,
   createPost,
   editPost,
-} from "../redux/actions/actions";
-import GreyBorderBtn from "./GreyBorderBtn";
-import BlueButton from "./BlueButton";
+} from "../../redux/actions/actions";
+import GreyBorderBtn from "../Buttons/GreyBorderBtn";
+import BlueButton from "../Buttons/BlueButton";
 import { SlEmotsmile } from "react-icons/sl";
 import { HiOutlinePhoto, HiDocument } from "react-icons/hi2";
 import { IoLogoYoutube } from "react-icons/io";

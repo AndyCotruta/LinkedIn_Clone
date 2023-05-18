@@ -5,9 +5,9 @@ import {
   CHANGE_SHOW_PROFILE_MODAL,
   editProfile,
   fetchProfile,
-} from "../redux/actions/actions";
-import BlueButton from "./BlueButton";
-import GreyBorderBtn from "./GreyBorderBtn";
+} from "../../redux/actions/actions";
+import BlueButton from "../Buttons/BlueButton";
+import GreyBorderBtn from "../Buttons/GreyBorderBtn";
 
 const MyProfileModal = (props) => {
   const dispatch = useDispatch();

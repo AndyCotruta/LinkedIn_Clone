@@ -1,10 +1,10 @@
-import message from "../Icon/Send.svg";
-import plus from "../Icon/Plus.svg";
+import message from "../../Icon/Send.svg";
+import plus from "../../Icon/Plus.svg";
 import { useDispatch, useSelector } from "react-redux";
 import { useLocation, useParams } from "react-router-dom";
 import { HiOutlinePencil } from "react-icons/hi";
 import { useEffect, useState } from "react";
-import { CHANGE_SHOW_PROFILE_MODAL } from "../redux/actions/actions";
+import { CHANGE_SHOW_PROFILE_MODAL } from "../../redux/actions/actions";
 import MyProfileModal from "./MyProfileModal";
 
 const ProfileSection = (props) => {

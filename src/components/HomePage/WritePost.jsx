@@ -4,7 +4,7 @@ import {
   CHANGE_POST_MODAL_EDIT_MODE,
   CHANGE_SHOW_POST_MODAL,
 } from "../../redux/actions/actions";
-import PostModal from "../PostModal";
+import PostModal from "../PostComponent/PostModal";
 
 const WritePost = () => {
   const editMode = useSelector((state) => state.posts.editMode);

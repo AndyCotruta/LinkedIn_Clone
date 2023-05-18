@@ -5,7 +5,7 @@ import { HiOutlinePencil, HiTrash } from "react-icons/hi";
 import { format, parse, parseISO } from "date-fns";
 import ExperienceModal from "./ExperienceModal";
 import MyProfileModal from "./MyProfileModal";
-import { deleteExperience } from "../redux/actions/actions";
+import { deleteExperience } from "../../redux/actions/actions";
 
 function ExpCard({ experience, index, currentProfile }) {
   const dispatch = useDispatch();

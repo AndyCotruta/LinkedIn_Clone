@@ -5,8 +5,8 @@ import { SlEmotsmile } from "react-icons/sl";
 import { HiOutlinePhoto, HiDocument } from "react-icons/hi2";
 import { IoMdArrowDropdown } from "react-icons/io";
 import OneComment from "./OneComment";
-import BlueButton from "./BlueButton";
-import { addComment } from "../redux/actions/actions";
+import BlueButton from "../Buttons/BlueButton";
+import { addComment } from "../../redux/actions/actions";
 
 function CommentField({ comments, postId }) {
   const dispatch = useDispatch();
