@@ -1,17 +1,4 @@
-import {
-  Navbar,
-  Col,
-  Row,
-  Container,
-  NavItem,
-  ListGroup,
-  ListGroupItem,
-  DropdownButton,
-  Dropdown,
-} from "react-bootstrap";
-import { Nav } from "react-bootstrap/esm";
-import { BsQuestionCircleFill } from "react-icons/bs";
-import { MdSettings } from "react-icons/md";
+import { Col, Row, ListGroup, DropdownButton, Dropdown } from "react-bootstrap";
 import question from "../../Icon/Exclude.svg";
 import settings from "../../Icon/settings.svg";
 import logo from "../../Icon/Logo.svg";

@@ -2,7 +2,7 @@ import React from "react";
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { SlEmotsmile } from "react-icons/sl";
-import { HiOutlinePhoto, HiDocument } from "react-icons/hi2";
+import { HiOutlinePhoto } from "react-icons/hi2";
 import { IoMdArrowDropdown } from "react-icons/io";
 import OneComment from "./OneComment";
 import BlueButton from "../Buttons/BlueButton";

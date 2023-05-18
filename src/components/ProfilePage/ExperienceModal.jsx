@@ -1,17 +1,8 @@
-import { useEffect, useState } from "react";
-import { Modal, Button, Form, Row, Col, FormControl } from "react-bootstrap";
-import { propTypes } from "react-bootstrap/esm/Image";
+import { useState } from "react";
+import { Modal, Form, Row, Col } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { parseISO, format } from "date-fns";
-import {
-  addExperience,
-  ADD_EXPERIENCE,
-  CHANGE_SHOW_MODAL,
-  editExperience,
-  editProfile,
-  fetchProfile,
-  GET_EXPERIENCE,
-} from "../../redux/actions/actions";
+import { addExperience, editExperience } from "../../redux/actions/actions";
 import BlueButton from "../Buttons/BlueButton";
 
 const ExperienceModal = ({
@@ -25,7 +16,6 @@ const ExperienceModal = ({
 
   const accessToken = localStorage.getItem("accessToken");
   const myProfile = useSelector((state) => state.profiles.myProfile);
-  const myExperiences = myProfile.experiences;
 
   const [addedData, setAddedData] = useState({
     role: "",

@@ -16,9 +16,9 @@ import CommentField from "./CommentField";
 
 const PostsDisplay = (props) => {
   const dispatch = useDispatch();
-  const editMode = useSelector((state) => state.posts.editMode);
+
   const myProfile = useSelector((state) => state.profiles.myProfile);
-  const showPostModal = useSelector((state) => state.posts.showPostModal);
+
   const [showPostOptions, setShowPostOptions] = useState(false);
   const accessToken = localStorage.getItem("accessToken");
   const [showComments, setShowComments] = useState(false);

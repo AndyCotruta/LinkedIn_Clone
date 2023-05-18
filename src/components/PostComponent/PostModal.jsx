@@ -2,7 +2,6 @@ import { Button, Form, Modal } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import {
   CHANGE_EDIT_POST,
-  CHANGE_SHOW_POST_MODAL,
   createPost,
   editPost,
 } from "../../redux/actions/actions";

@@ -1,13 +1,11 @@
 import React from "react";
-
 import search from "../../Icon/Search.svg";
 import { useNavigate } from "react-router-dom";
-import { ADD_CLICKED_PROFILE, fetchProfile } from "../../redux/actions/actions";
+import { ADD_CLICKED_PROFILE } from "../../redux/actions/actions";
 import { useDispatch } from "react-redux";
 
 const SearchModel = (props) => {
   const navigate = useNavigate();
-  const action = ADD_CLICKED_PROFILE;
   const dispatch = useDispatch();
   const id = props.resultData._id;
 

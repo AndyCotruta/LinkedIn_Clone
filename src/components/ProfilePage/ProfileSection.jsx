@@ -1,15 +1,13 @@
 import message from "../../Icon/Send.svg";
 import plus from "../../Icon/Plus.svg";
-import { useDispatch, useSelector } from "react-redux";
-import { useLocation, useParams } from "react-router-dom";
+import { useSelector } from "react-redux";
+import { useParams } from "react-router-dom";
 import { HiOutlinePencil } from "react-icons/hi";
-import { useEffect, useState } from "react";
-import { CHANGE_SHOW_PROFILE_MODAL } from "../../redux/actions/actions";
+import { useState } from "react";
 import MyProfileModal from "./MyProfileModal";
 
 const ProfileSection = (props) => {
   const params = useParams();
-  const dispatch = useDispatch();
 
   const myProfile = useSelector((state) => state.profiles.myProfile);
 

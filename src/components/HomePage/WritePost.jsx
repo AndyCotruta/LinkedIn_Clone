@@ -1,4 +1,3 @@
-import "./HomePage.css";
 import { useDispatch, useSelector } from "react-redux";
 import {
   CHANGE_POST_MODAL_EDIT_MODE,
@@ -7,7 +6,6 @@ import {
 import PostModal from "../PostComponent/PostModal";
 
 const WritePost = () => {
-  const editMode = useSelector((state) => state.posts.editMode);
   const myProfile = useSelector((state) => state.profiles.myProfile);
   const showPostModal = useSelector((state) => state.posts.showPostModal);
   const dispatch = useDispatch();

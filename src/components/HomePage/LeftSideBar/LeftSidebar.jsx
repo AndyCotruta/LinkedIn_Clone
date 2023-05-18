@@ -2,7 +2,6 @@ import { Col } from "react-bootstrap";
 import premium from "../../../Icon/Premium.svg";
 import items from "../../../Icon/Premium.svg";
 import hashtag from "../../../Icon/hashtag.svg";
-import { propTypes } from "react-bootstrap/esm/Image";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 const LeftSidebar = (props) => {

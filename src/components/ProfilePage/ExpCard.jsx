@@ -1,10 +1,8 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useParams } from "react-router-dom";
 import { HiOutlinePencil, HiTrash } from "react-icons/hi";
-import { format, parse, parseISO } from "date-fns";
+import { format, parseISO } from "date-fns";
 import ExperienceModal from "./ExperienceModal";
-import MyProfileModal from "./MyProfileModal";
 import { deleteExperience } from "../../redux/actions/actions";
 
 function ExpCard({ experience, index, currentProfile }) {

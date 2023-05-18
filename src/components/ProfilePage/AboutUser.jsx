@@ -1,7 +1,6 @@
 import { useSelector } from "react-redux";
 
 const AboutUser = (props) => {
-  const currentProfile = useSelector((state) => state.profiles.clickedProfile);
   return (
     <div className="about-section cd cd-width">
       <div className="about-text ff">

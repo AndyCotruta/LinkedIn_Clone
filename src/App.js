@@ -1,14 +1,10 @@
 import MainNavbar from "./components/Navbar/MainNavbar";
 import MainFooter from "./components/HomePage/MainFooter";
 import "bootstrap/dist/css/bootstrap.min.css";
-
-import { Col, Container, Row } from "react-bootstrap";
-
+import { Container, Row } from "react-bootstrap";
 import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
-
 import UserProfile from "./components/ProfilePage/UserProfile";
-import RightSideBar from "./components/HomePage/RightSideBar/RightSideBar";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import HomePage from "./components/HomePage/HomePage";
 import LogIn from "./components/LogInPage/LogIn";

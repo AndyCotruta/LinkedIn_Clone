@@ -1,11 +1,7 @@
-import { useEffect, useState } from "react";
-import { Button, Form, Modal } from "react-bootstrap";
+import { useState } from "react";
+import { Form, Modal } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
-import {
-  CHANGE_SHOW_PROFILE_MODAL,
-  editProfile,
-  fetchProfile,
-} from "../../redux/actions/actions";
+import { editProfile } from "../../redux/actions/actions";
 import BlueButton from "../Buttons/BlueButton";
 import GreyBorderBtn from "../Buttons/GreyBorderBtn";
 

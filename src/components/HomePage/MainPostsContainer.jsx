@@ -1,11 +1,7 @@
 import WritePost from "./WritePost";
 import PostsDisplay from "../PostComponent/PostsDisplay";
-
 import { Col } from "react-bootstrap";
-
-import { propTypes } from "react-bootstrap/esm/Image";
 import { useDispatch, useSelector } from "react-redux";
-import { useEffect } from "react";
 import {
   CHANGE_POST_MODAL_EDIT_MODE,
   CHANGE_SHOW_POST_MODAL,

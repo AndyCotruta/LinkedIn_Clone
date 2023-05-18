@@ -1,23 +1,11 @@
-import { useEffect, useState } from "react";
-import {
-  CHANGE_EDIT_EXP_SECTION,
-  CHANGE_SHOW_MODAL,
-  fetchProfile,
-  GET_EXPERIENCE,
-  ADD_CURRENT_EXP_DATA,
-  ADD_EXPERIENCE,
-} from "../../redux/actions/actions";
-import { useDispatch, useSelector } from "react-redux";
+import { useState } from "react";
+import { useSelector } from "react-redux";
 import { HiOutlinePlus } from "react-icons/hi";
-import { HiOutlinePencil, HiTrash } from "react-icons/hi";
-import { IoMdArrowBack } from "react-icons/io";
 import ExperienceModal from "./ExperienceModal";
 import { useParams } from "react-router-dom";
-import { format, parse, parseISO } from "date-fns";
 import ExpCard from "./ExpCard";
 
 const Experience = ({ currentProfile }) => {
-  const dispatch = useDispatch();
   const params = useParams();
 
   const myProfile = useSelector((state) => state.profiles.myProfile);

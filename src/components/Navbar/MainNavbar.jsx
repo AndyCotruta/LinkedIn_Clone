@@ -18,15 +18,10 @@ import { useNavigate } from "react-router-dom";
 import SearchModel from "../Navbar/SearchModel";
 import BlueBorderBtn from "../Buttons/BlueBorderBtn";
 import BlueButton from "../Buttons/BlueButton";
-// import { ADD_QUERY, ADD_SEARCH_RESULTS, CHANGE_CLICKED_SEARCH_STATUS } from "../redux/actions/actions";
 import {
   ADD_CLICKED_PROFILE,
   ADD_MY_PROFILE,
-  ADD_QUERY,
-  ADD_SEARCH_RESULTS,
-  CHANGE_CLICKED_SEARCH_STATUS,
 } from "../../redux/actions/actions";
-
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState } from "react";
 

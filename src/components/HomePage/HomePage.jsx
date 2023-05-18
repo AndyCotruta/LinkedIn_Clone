@@ -1,14 +1,7 @@
 import RightSideBar from "./RightSideBar/RightSideBar";
 import MainPostsContainer from "./MainPostsContainer";
-import { Col } from "react-bootstrap";
 import LeftSidebar from "./LeftSideBar/LeftSidebar";
-import { useDispatch, useSelector } from "react-redux";
-import {
-  ADD_ALL_POSTS,
-  ADD_MY_PROFILE,
-  fetchPosts,
-  fetchProfile,
-} from "../../redux/actions/actions";
+import { useSelector } from "react-redux";
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
