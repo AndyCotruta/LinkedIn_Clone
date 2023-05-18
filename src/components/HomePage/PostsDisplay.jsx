@@ -147,7 +147,7 @@ const PostsDisplay = (props) => {
             </button>
           </div>
         </div>
-        <CommentField comments={props.post.comments}/>
+        <CommentField comments={props.post.comments} postId={props.post._id} />
       </div>
     </>
   );

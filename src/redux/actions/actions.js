@@ -297,3 +297,33 @@ export const likePost = (accessToken, postId) => {
     }
   };
 };
+
+export const addComment = (accessToken, postId, input) => {
+  return async (dispatch) => {
+    try {
+      let dataToSend = {
+        comment: input,
+      };
+      console.log(dataToSend);
+      let response = await fetch(
+        `http://localhost:3001/posts/${postId}/comments`,
+        {
+          method: "POST",
+          headers: {
+            Authorization: `Bearer ${accessToken}`,
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(dataToSend),
+        }
+      );
+      if (response.ok) {
+        let data = await response.json();
+        dispatch({ type: CHANGE_TARGET_POST, payload: data });
+      } else {
+        console.log("Error while uploading comment");
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+};

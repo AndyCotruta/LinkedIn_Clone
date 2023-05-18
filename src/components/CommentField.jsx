@@ -1,14 +1,19 @@
 import React from "react";
 import { useState } from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { SlEmotsmile } from "react-icons/sl";
 import { HiOutlinePhoto, HiDocument } from "react-icons/hi2";
 import { IoMdArrowDropdown } from "react-icons/io";
 import OneComment from "./OneComment";
+import BlueButton from "./BlueButton";
+import { addComment } from "../redux/actions/actions";
 
-function CommentField({ comments }) {
+function CommentField({ comments, postId }) {
+  const dispatch = useDispatch();
+  const accessToken = localStorage.getItem("accessToken");
   const myProfile = useSelector((state) => state.profiles.myProfile);
-  const [comment, setComment] = useState("");
+  const [input, setInput] = useState("");
+  const [numberOfComments, setNumberOfComments] = useState(2);
 
   return (
     <div>
@@ -17,10 +22,10 @@ function CommentField({ comments }) {
         <div className="comment-field-container flex-grow-1">
           <input
             className="comment-input-field"
-            value={comment}
+            value={input}
             placeholder="Add a comment..."
             onChange={(e) => {
-              setComment(e.target.value);
+              setInput(e.target.value);
             }}
           />
           <button className="comment-field-buttons">
@@ -32,14 +37,32 @@ function CommentField({ comments }) {
           </button>
         </div>
       </div>
-      <div className="comments-container p-3">
-        <div className="d-flex align-items-center">
+      {input.length > 0 && (
+        <div
+          className="px-3 pb-3"
+          onClick={() => {
+            dispatch(addComment(accessToken, postId, input));
+          }}
+        >
+          <BlueButton text={"Post"} />
+        </div>
+      )}
+      <div className="comments-container px-3 pb-3">
+        <div className="d-flex align-items-center pb-3">
           <div className="most-relevant">Most relevant</div>
           <IoMdArrowDropdown className="most-relevant" />
         </div>
-        {comments.map((comment) => (
-          <OneComment comment={comment} />
+        {comments.slice(0, numberOfComments).map((comment) => (
+          <OneComment key={comment._id} comment={comment} />
         ))}
+        <div
+          className="load-more-comments"
+          onClick={() => {
+            setNumberOfComments(numberOfComments + 2);
+          }}
+        >
+          Load more comments
+        </div>
       </div>
     </div>
   );

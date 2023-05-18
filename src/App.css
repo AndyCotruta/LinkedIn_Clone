@@ -904,4 +904,43 @@ a {
   background-color: #f2f2f2;
   border-radius: 0 5px 5px 5px;
 }
+
+.comment-user-name {
+  font-weight: bold;
+}
+
+.comment-user-title {
+  color: var(--linkedin-dark-grey);
+  font-size: 13px;
+}
+
+.comment-createdAt {
+  font-size: 12px;
+  color: var(--linkedin-dark-grey);
+}
+
+.comment-interaction-container {
+  margin-left: 48px;
+  font-size: 13px;
+  color: var(--linkedin-dark-grey);
+  display: flex;
+  gap: 0.5rem;
+}
+
+.comment-interaction {
+  cursor: pointer;
+}
+
+.load-more-comments {
+  cursor: pointer;
+  color: var(--linkedin-dark-grey);
+  width: 30%;
+  display: flex;
+  justify-content: center;
+  border-radius: 4px;
+}
+
+.load-more-comments:hover {
+  background-color: var(--linkedin-bg-off-white);
+}
 /* ........................................Comment Field.......................................... */
