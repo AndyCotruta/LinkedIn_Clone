@@ -186,8 +186,8 @@ const MainNavbar = ({ signUp, setSignUp }) => {
                       id="basic-nav-dropdown"
                       className="profile-name"
                     >
-                      <NavDropdown.Item
-                        className="dropdown-main-action d-flex align-items-center"
+                      <div
+                        className="d-flex align-items-center px-2 pb-2"
                         onClick={() => {
                           navigate(`/profile/${myProfile._id}`);
                           dispatch({
@@ -196,20 +196,20 @@ const MainNavbar = ({ signUp, setSignUp }) => {
                           });
                         }}
                       >
-                        <div className="">
+                        <div className="mr-2">
                           <img
                             src={myProfile.image}
                             alt=""
                             className="profile-icon2"
                           />
                         </div>
-                        <div style={{ color: "black" }} className="pl-2">
-                          <div className="fs-16 fw-700 ">
+                        <div style={{ color: "black" }} className="text-wrap">
+                          <div className="fs-16 fw-700 text-center">
                             {myProfile.firstName} {myProfile.lastName}
                           </div>
-                          <div className="fs-14 ">{myProfile.title}</div>
+                          <div className="fs-14">{myProfile.title}</div>
                         </div>
-                      </NavDropdown.Item>
+                      </div>
                       <div
                         href="#action/3.1.2"
                         className="nav-view-profile-btn"
@@ -223,64 +223,61 @@ const MainNavbar = ({ signUp, setSignUp }) => {
                         />
                       </div>
                       <NavDropdown.Divider />
-                      <div
-                        href="#action/3.2"
-                        className="dropdown-main-action fs-16 fw-800 ml-4"
-                      >
+                      <div href="#action/3.2" className=" fs-16 fw-800 px-2">
                         Account
                       </div>
-                      <NavDropdown.Item
+                      <div
                         href="#action/3.2.1"
-                        className="dropdown-secondary-action fs-14"
+                        className="dropdown-secondary-action pt-2 fs-14  px-2"
                       >
                         Try premium for free
-                      </NavDropdown.Item>
-                      <NavDropdown.Item
+                      </div>
+                      <div
                         href="#action/3.2.2"
-                        className="dropdown-secondary-action fs-14"
+                        className="dropdown-secondary-action pt-2 fs-14  px-2"
                       >
                         Settings & Privacy
-                      </NavDropdown.Item>
-                      <NavDropdown.Item
+                      </div>
+                      <div
                         href="#action/3.2.3"
-                        className="dropdown-secondary-action fs-14"
+                        className="dropdown-secondary-action pt-2 fs-14  px-2"
                       >
                         Help
-                      </NavDropdown.Item>
-                      <NavDropdown.Item
+                      </div>
+                      <div
                         href="#action/3.2.4"
-                        className="dropdown-secondary-action fs-14"
+                        className="dropdown-secondary-action pt-2  fs-14  px-2"
                       >
                         Language
-                      </NavDropdown.Item>
+                      </div>
                       <NavDropdown.Divider />
                       <div
                         href="#action/3.3"
-                        className="dropdown-main-action fs-16 fw-800 ml-4"
+                        className="dropdown-main-action fs-16 fw-800 px-2"
                       >
                         Manage
                       </div>
-                      <NavDropdown.Item
+                      <div
                         href="#action/3.3.1"
-                        className="dropdown-secondary-action fs-14"
+                        className="dropdown-secondary-action pt-2 fs-14  px-2"
                       >
                         Posts & Activity
-                      </NavDropdown.Item>
-                      <NavDropdown.Item
+                      </div>
+                      <div
                         href="#action/3.3.2"
-                        className="dropdown-secondary-action fs-14"
+                        className="dropdown-secondary-action pt-2 fs-14  px-2"
                       >
                         Job Posting Account
-                      </NavDropdown.Item>
+                      </div>
                       <NavDropdown.Divider />
-                      <NavDropdown.Item
-                        className="fs-14"
+                      <div
+                        className="fs-14  px-2 dropdown-signout"
                         onClick={() => {
                           handleSignOut();
                         }}
                       >
                         Sign Out
-                      </NavDropdown.Item>
+                      </div>
                     </NavDropdown>
                   </div>
                 </>

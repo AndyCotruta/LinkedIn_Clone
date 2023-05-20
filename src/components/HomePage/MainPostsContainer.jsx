@@ -17,7 +17,7 @@ const MainPostsContainer = () => {
   });
   return (
     <>
-      <div className="hui">
+      <div>
         <PostModal
           show={showPostModal}
           onHide={() => {
