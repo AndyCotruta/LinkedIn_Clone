@@ -22,7 +22,7 @@ const UserProfile = () => {
 
   return (
     <>
-      <Col sm={12} md={6} lg={8}>
+      <div sm={12} md={6} lg={8}>
         <ProfileSection currentProfile={currentProfile} />
         <div className="cards-main-container cd-width">
           <AboutUser currentProfile={currentProfile} />
@@ -48,7 +48,7 @@ const UserProfile = () => {
             <Interests />
           </div>
         </div>
-      </Col>
+      </div>
       <Col sm={12} md={6} lg={4} className="px-0">
         <RightSideBar />
       </Col>

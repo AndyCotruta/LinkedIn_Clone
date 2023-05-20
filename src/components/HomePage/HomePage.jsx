@@ -4,6 +4,7 @@ import LeftSidebar from "./LeftSideBar/LeftSidebar";
 import { useSelector } from "react-redux";
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import { Col } from "react-bootstrap";
 
 const HomePage = () => {
   const navigate = useNavigate();
@@ -19,15 +20,15 @@ const HomePage = () => {
   }, []);
 
   return (
-    <div className="d-flex">
+    <>
       {myProfile && (
-        <>
+        <div className="hom">
           <LeftSidebar myProfileData={myProfile} />
           <MainPostsContainer />
           <RightSideBar />
-        </>
+        </div>
       )}
-    </div>
+    </>
   );
 };
 

@@ -17,7 +17,7 @@ const MainPostsContainer = () => {
   });
   return (
     <>
-      <Col sm={12} md={9} lg={7}>
+      <div className="hui">
         <PostModal
           show={showPostModal}
           onHide={() => {
@@ -41,7 +41,7 @@ const MainPostsContainer = () => {
         {sortedPosts?.map((post, i) => (
           <PostsDisplay post={post} key={post._id} i={i} />
         ))}
-      </Col>
+      </div>
     </>
   );
 };

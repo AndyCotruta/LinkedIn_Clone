@@ -36,6 +36,10 @@ body {
   background-color: var(--linkedin-white-grey) !important;
 }
 
+.hui {
+  width: 450px;
+}
+
 .profile-main {
   /* width: 782px; */
   border-radius: 10px;
@@ -437,6 +441,15 @@ a {
 }
 
 /* ....................... Home Page ........................ */
+.hom {
+  display: flex;
+  gap: 1rem;
+}
+
+.col {
+  padding: none !important;
+}
+
 .mainContainerPost {
   background-color: var(--linkedin-white);
   border-radius: 10px;
@@ -625,6 +638,7 @@ a {
   height: 52px;
   border-radius: 50%;
   background-color: var(--linkedin-bg-off-white);
+  object-fit: cover;
 }
 
 .courses-img {
@@ -881,40 +895,51 @@ a {
 /* ........................................Comment Field.......................................... */
 
 /* ........................................Left Side Bar........................................... */
+.left-side-col {
+  width: 225px;
+}
+
+.profile-cover-mini {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-radius: 10px 10px 0 0;
+  border: solid 1px var(--linkedin-white-grey);
+}
 
 .profile-cover-mini img {
   height: 56px;
   width: 100%;
   object-fit: cover;
-  position: relative;
   border-radius: 10px 10px 0 0;
 }
 
+.profile-text-mini {
+  border: solid 1px var(--linkedin-white-grey);
+  border-top: none;
+}
+
 .profile-picture-mini img {
-  position: absolute;
   width: 72px;
   height: 72px;
   border-radius: 50%;
   border: 2px solid var(--linkedin-white);
-  top: 20px;
 
-  transform: translateX(60%);
+  transform: translateY(-50%);
 
   cursor: pointer;
 }
 
 .left-profile-mini {
   background-color: var(--linkedin-white);
-  border-radius: 0 0 10px 10px;
-  border: solid 1px var(--linkedin-white-grey);
+  border-radius: 10px;
 }
 
 .profile-text-mini {
   display: flex !important;
   flex-direction: column;
   align-items: center;
-  margin-block-start: 45px;
-  padding-block-end: 25px;
+  padding-bottom: 1rem;
   border-bottom: 1px solid var(--linkedin-white-grey);
 }
 
@@ -924,13 +949,18 @@ a {
   align-items: center;
   padding-block: 10px;
   background-color: white;
-  border-radius: 0 0 10px 10px;
-  border: solid 1px var(--linkedin-white-grey);
-  border-top: solid 1px transparent;
+  border-left: solid 1px var(--linkedin-white-grey);
+  border-right: solid 1px var(--linkedin-white-grey);
+  border-bottom: solid 1px var(--linkedin-white-grey);
   cursor: pointer;
   position: sticky;
   top: 222px;
 }
+
+.profile-text-mini2:last-child {
+  border-radius: 0 0 10px 10px;
+}
+
 .profile-text-mini2:hover {
   background-color: rgb(245, 245, 245);
 }
@@ -1195,6 +1225,7 @@ a {
 
 .profile-icon2 {
   width: 60px;
+  height: 60px;
   object-fit: cover;
   border-radius: 50%;
 }
@@ -1204,12 +1235,12 @@ a {
 }
 
 .login-buttons {
-  border-left: 2px solid var(--linkedin-grey);
   height: 40px;
   display: flex;
   align-items: center;
   gap: 1rem;
   padding-left: 1rem;
+  margin-left: auto;
 }
 
 .search-icon-clicked {
@@ -1239,6 +1270,14 @@ a {
   fill: var(--linkedin-dark-grey);
 }
 
+.dropdown-item {
+  white-space: wrap !important;
+}
+
+.nav-view-profile-btn {
+  width: 100%;
+}
+
 /* ........................................Main Navbar............................................... */
 
 /* .........................................Responsive Design.................................... */
@@ -1252,7 +1291,36 @@ a {
     height: 24px;
   }
   .menu-size {
-    width: 32px;
+    width: 40px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .hom {
+    display: flex;
+    flex-direction: column;
+  }
+  .secondary-side-nav {
+    display: none;
+  }
+  .left-side-col {
+    width: 100%;
+  }
+  .col {
+    padding: none;
+  }
+  .hui {
+    width: 100%;
+  }
+  .share-box-btn-text {
+    font-size: 12px;
+  }
+  .share-box-feed-entry-toolbar__item-text {
+    font-size: 12px;
+  }
+  .profile-text-area {
+    padding-top: 3rem;
+    padding-inline: 1rem;
   }
 }
 
@@ -1272,6 +1340,12 @@ a {
   }
   .menu-size {
     max-width: 60px;
+  }
+}
+
+@media screen and (max-width: 990px) {
+  .right-sidebar {
+    display: none !important;
   }
 }
 

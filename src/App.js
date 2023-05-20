@@ -19,17 +19,16 @@ function App() {
       <BrowserRouter>
         <MainNavbar signUp={signUp} setSignUp={setSignUp} />
         <Container>
-          <Row>
-            <Routes>
-              <Route path="/profile/:userId" element={<UserProfile />} />
-              <Route path="/" element={<HomePage />} />
-              <Route
-                path="/login"
-                element={<LogIn signUp={signUp} setSignUp={setSignUp} />}
-              />
-              <Route path="/redirect" element={<AnimationPage />} />
-            </Routes>
-          </Row>
+          <Routes>
+            <Route path="/profile/:userId" element={<UserProfile />} />
+            <Route path="/" element={<HomePage />} />
+            <Route
+              path="/login"
+              element={<LogIn signUp={signUp} setSignUp={setSignUp} />}
+            />
+            <Route path="/redirect" element={<AnimationPage />} />
+          </Routes>
+
           <MainFooter />
         </Container>
       </BrowserRouter>

@@ -10,7 +10,7 @@ const LeftSidebar = (props) => {
 
   return (
     <>
-      <Col className="left-side-col" sm={12} md={3} lg={2}>
+      <div className="left-side-col">
         <div className="left-profile-mini">
           <div className="profile-cover-mini">
             <img
@@ -29,23 +29,23 @@ const LeftSidebar = (props) => {
           </div>
           <div className="profile-text-area-mini">
             <div
-              className="profile-text-mini"
+              className="profile-text-mini pt-2 px-2"
               onClick={() => {
                 navigate(`/profile/${myProfile._id}`);
               }}
             >
-              <p className="username-mini fs-16 fw-700 margin-0">
+              <p className="username-mini fs-16 fw-700 margin-0 text-center">
                 {props.myProfileData.firstName} {props.myProfileData.lastName}
               </p>
               <p className="user-role-mini fs-12">
                 {props.myProfileData.title}
               </p>
             </div>
-            <div className="profile-text-mini collapse-hide align-items-start px-2">
+            <div className="profile-text-mini2 align-items-start px-2">
               <p className="username-mini fs-12 fw-700 margin-0">
                 Achieve your goals faster
               </p>
-              <div className="user-role-mini fs-12 fw-800 d-flex align-items-center mt-1">
+              <div className="user-role-mini fs-12 fw-800 d-flex align-items-center">
                 <img
                   src={premium}
                   alt=""
@@ -56,11 +56,11 @@ const LeftSidebar = (props) => {
               </div>
             </div>
             <div className="profile-text-mini2 collapse-hide  align-items-start pl-2">
-              <p className="user-role-mini fs-12 fw-800 d-flex align-items-center mt-1">
+              <p className="user-role-mini fs-12 fw-800 d-flex align-items-center">
                 <img
                   src={items}
                   alt=""
-                  style={{ width: "13px" }}
+                  style={{ width: "20px" }}
                   className="mr-1"
                 />{" "}
                 My items
@@ -79,7 +79,7 @@ const LeftSidebar = (props) => {
                 className="mr-2"
                 style={{ width: "12px" }}
               />{" "}
-              Recent
+              visualdesign
             </p>
             <p className="mb-2 d-flex">
               <img
@@ -88,7 +88,7 @@ const LeftSidebar = (props) => {
                 className="mr-2"
                 style={{ width: "12px" }}
               />{" "}
-              Recent
+              developer
             </p>
             <p className="mb-2 d-flex">
               <img
@@ -97,7 +97,7 @@ const LeftSidebar = (props) => {
                 className="mr-2"
                 style={{ width: "12px" }}
               />{" "}
-              Recent
+              chatGPT
             </p>
             <p className="mb-2 d-flex">
               <img
@@ -106,7 +106,7 @@ const LeftSidebar = (props) => {
                 className="mr-2"
                 style={{ width: "12px" }}
               />{" "}
-              Recent
+              AI
             </p>
           </div>
         </div>
@@ -115,7 +115,7 @@ const LeftSidebar = (props) => {
             Discover more
           </p>
         </div>
-      </Col>
+      </div>
     </>
   );
 };
