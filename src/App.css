@@ -1212,17 +1212,51 @@ a {
   padding-left: 1rem;
 }
 
+.search-icon-clicked {
+  background-color: var(--linkedin-bg-off-white);
+}
+
 .search-small-screens {
   position: absolute;
   background-color: white;
+  width: calc(100% - 32px);
+  border-top: 1px solid var(--linkedin-grey);
+  box-shadow: 0px 1050px 0px 1050px rgba(0, 0, 0, 0.7);
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+}
+
+.input-small-screens {
+  border: none;
   width: 100%;
+}
+
+.input-small-screens:focus {
+  outline: none;
+}
+
+.search-icon-small-screens {
+  fill: var(--linkedin-dark-grey);
 }
 
 /* ........................................Main Navbar............................................... */
 
 /* .........................................Responsive Design.................................... */
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 650px) {
+  .network {
+    display: none !important;
+  }
+  .nav-menu-icon {
+    width: 24px;
+    height: 24px;
+  }
+  .menu-size {
+    width: 32px;
+  }
+}
+
+@media screen and (max-width: 810px) {
   .login-container {
     display: flex;
     flex-direction: column;
@@ -1232,6 +1266,12 @@ a {
   }
   .login-name-container {
     flex-direction: column;
+  }
+  .nav-text {
+    display: none;
+  }
+  .menu-size {
+    max-width: 60px;
   }
 }
 

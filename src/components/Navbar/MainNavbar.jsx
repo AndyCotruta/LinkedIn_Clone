@@ -24,6 +24,7 @@ import {
 } from "../../redux/actions/actions";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState } from "react";
+import { FiSearch } from "react-icons/fi";
 
 const MainNavbar = ({ signUp, setSignUp }) => {
   const navigate = useNavigate();
@@ -32,6 +33,7 @@ const MainNavbar = ({ signUp, setSignUp }) => {
   const myProfile = useSelector((state) => state.profiles.myProfile);
   const allProfiles = useSelector((state) => state.profiles.allProfiles.users);
 
+  const [showSearchSmall, setShowSearchSmall] = useState(false);
   const [searchResults, setSearchedResults] = useState([]);
   const [query, setQuery] = useState("");
 
@@ -93,10 +95,19 @@ const MainNavbar = ({ signUp, setSignUp }) => {
             </Form>
           </div>
 
-          <div className="">
-            <div className="elapsed-menu mr-auto d-flex align-items-center">
-              <Nav.Link className="search-icon p-0">
-                <div className=" d-flex flex-column align-items-center nav-icon menu-size">
+          <div className="flex-grow-1">
+            <div className="elapsed-menu mr-auto d-flex align-items-center justify-content-between">
+              <Nav.Link
+                className={
+                  showSearchSmall
+                    ? "search-icon p-0 search-icon-clicked"
+                    : "search-icon p-0"
+                }
+                onClick={() => {
+                  setShowSearchSmall(!showSearchSmall);
+                }}
+              >
+                <div className=" d-flex flex-column align-items-center  nav-icon menu-size">
                   <div>
                     <img src={search} alt="" className="nav-menu-icon" />
                   </div>
@@ -258,7 +269,7 @@ const MainNavbar = ({ signUp, setSignUp }) => {
                 </div>
               )}
               {myProfile ? (
-                <div className="d-flex align-items-center">
+                <div className="d-flex align-items-center network">
                   <div className="profile-drop-down menu-size work">
                     <img src={work} alt="" className="nav-menu-icon" />
                     <div className="work-text">Work</div>
@@ -297,9 +308,34 @@ const MainNavbar = ({ signUp, setSignUp }) => {
             </div>
           </div>
         </div>
-        <div className="search-small-screens">
-          Search Input for smaller screens
-        </div>
+        {showSearchSmall && (
+          <div className="search-small-screens py-3">
+            <div className="d-flex align-items-center">
+              <input
+                value={query}
+                className="input-small-screens pl-3"
+                placeholder="Search here..."
+                onChange={(e) => {
+                  setQuery(e.target.value);
+                }}
+              />
+            </div>
+
+            <div>
+              {searchResults.length !== 0 &&
+                query &&
+                searchResults
+                  .slice(0, 5)
+                  .map((result) => (
+                    <SearchModel
+                      resultData={result}
+                      key={result._id}
+                      setQuery={setQuery}
+                    />
+                  ))}
+            </div>
+          </div>
+        )}
       </Container>
     </div>
   );
