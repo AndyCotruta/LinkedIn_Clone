@@ -24,12 +24,15 @@ export const ADD_QUERY = "ADD_QUERY";
 export const fetchProfile = (accessToken) => {
   return async (dispatch) => {
     try {
-      let response = await fetch("http://localhost:3001/users/me", {
-        method: "GET",
-        headers: {
-          Authorization: `Bearer ${accessToken}`,
-        },
-      });
+      let response = await fetch(
+        `${process.env.REACT_APP_BACKEND_URL}/users/me`,
+        {
+          method: "GET",
+          headers: {
+            Authorization: `Bearer ${accessToken}`,
+          },
+        }
+      );
       if (response.ok) {
         let data = await response.json();
         dispatch({
@@ -54,13 +57,16 @@ export const editProfile = (accessToken, editedData) => {
       formData.append("location", editedData.location);
       formData.append("about", editedData.about);
       formData.append("userImage", editedData.image);
-      let response = await fetch("http://localhost:3001/users/me", {
-        method: "PUT",
-        headers: {
-          Authorization: `Bearer ${accessToken}`,
-        },
-        body: formData,
-      });
+      let response = await fetch(
+        `${process.env.REACT_APP_BACKEND_URL}/users/me`,
+        {
+          method: "PUT",
+          headers: {
+            Authorization: `Bearer ${accessToken}`,
+          },
+          body: formData,
+        }
+      );
       if (response.ok) {
         console.log("Response ok");
         let data = await response.json();
@@ -80,14 +86,17 @@ export const editProfile = (accessToken, editedData) => {
 export const addExperience = (accessToken, addedData) => {
   return async (dispatch) => {
     try {
-      let response = await fetch(`http://localhost:3001/users/me/experience`, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${accessToken}`,
-        },
-        body: JSON.stringify(addedData),
-      });
+      let response = await fetch(
+        `${process.env.REACT_APP_BACKEND_URL}/users/me/experience`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${accessToken}`,
+          },
+          body: JSON.stringify(addedData),
+        }
+      );
       if (response.ok) {
         let data = await response.json();
         dispatch({
@@ -107,7 +116,7 @@ export const editExperience = (accessToken, editedData, index) => {
   return async (dispatch) => {
     try {
       let response = await fetch(
-        `http://localhost:3001/users/me/experience/${index}`,
+        `${process.env.REACT_APP_BACKEND_URL}/users/me/experience/${index}`,
         {
           method: "PUT",
           headers: {
@@ -135,14 +144,17 @@ export const editExperience = (accessToken, editedData, index) => {
 export const deleteExperience = (accessToken, experience) => {
   return async (dispatch) => {
     try {
-      let response = await fetch(`http://localhost:3001/users/me/experience/`, {
-        method: "DELETE",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${accessToken}`,
-        },
-        body: JSON.stringify(experience),
-      });
+      let response = await fetch(
+        `${process.env.REACT_APP_BACKEND_URL}/users/me/experience/`,
+        {
+          method: "DELETE",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${accessToken}`,
+          },
+          body: JSON.stringify(experience),
+        }
+      );
       if (response.ok) {
         let data = await response.json();
         dispatch({
@@ -161,7 +173,7 @@ export const deleteExperience = (accessToken, experience) => {
 export const fetchPosts = () => {
   return async (dispatch) => {
     try {
-      let response = await fetch("http://localhost:3001/posts");
+      let response = await fetch(`${process.env.REACT_APP_BACKEND_URL}/posts`);
       if (response.ok) {
         let data = await response.json();
         dispatch({
@@ -180,7 +192,7 @@ export const fetchPosts = () => {
 export const fetchAllProfiles = () => {
   return async (dispatch) => {
     try {
-      let response = await fetch("http://localhost:3001/users");
+      let response = await fetch(`${process.env.REACT_APP_BACKEND_URL}/users`);
       if (response.ok) {
         let data = await response.json();
         dispatch({
@@ -202,7 +214,7 @@ export const createPost = (accessToken, postText, postImage) => {
       const formData = new FormData();
       formData.append("text", postText);
       formData.append("postImage", postImage);
-      let response = await fetch("http://localhost:3001/posts", {
+      let response = await fetch(`${process.env.REACT_APP_BACKEND_URL}/posts`, {
         method: "POST",
         headers: {
           Authorization: `Bearer ${accessToken}`,
@@ -231,13 +243,16 @@ export const editPost = (accessToken, postId, postText, postImage) => {
       formData.append("text", postText);
       formData.append("postImage", postImage);
       console.log(postImage);
-      let response = await fetch(`http://localhost:3001/posts/` + postId, {
-        method: "PUT",
-        headers: {
-          Authorization: `Bearer ${accessToken}`,
-        },
-        body: formData,
-      });
+      let response = await fetch(
+        `${process.env.REACT_APP_BACKEND_URL}/posts/` + postId,
+        {
+          method: "PUT",
+          headers: {
+            Authorization: `Bearer ${accessToken}`,
+          },
+          body: formData,
+        }
+      );
       if (response.ok) {
         console.log("Response ok");
         dispatch(fetchPosts());
@@ -257,12 +272,15 @@ export const editPost = (accessToken, postId, postText, postImage) => {
 export const deletePost = (accessToken, postId) => {
   return async (dispatch) => {
     try {
-      let response = await fetch(`http://localhost:3001/posts/` + postId, {
-        method: "DELETE",
-        headers: {
-          Authorization: `Bearer ${accessToken}`,
-        },
-      });
+      let response = await fetch(
+        `${process.env.REACT_APP_BACKEND_URL}/posts/` + postId,
+        {
+          method: "DELETE",
+          headers: {
+            Authorization: `Bearer ${accessToken}`,
+          },
+        }
+      );
       if (response.ok) {
         dispatch(fetchPosts());
       } else {
@@ -278,7 +296,7 @@ export const likePost = (accessToken, postId) => {
   return async (dispatch) => {
     try {
       let response = await fetch(
-        `http://localhost:3001/posts/${postId}/likes`,
+        `${process.env.REACT_APP_BACKEND_URL}/posts/${postId}/likes`,
         {
           method: "PUT",
           headers: {
@@ -306,7 +324,7 @@ export const addComment = (accessToken, postId, input) => {
       };
       console.log(dataToSend);
       let response = await fetch(
-        `http://localhost:3001/posts/${postId}/comments`,
+        `${process.env.REACT_APP_BACKEND_URL}/posts/${postId}/comments`,
         {
           method: "POST",
           headers: {

@@ -11,13 +11,16 @@ function LoginInputArea() {
 
   const handleLogin = async () => {
     try {
-      let response = await fetch("http://localhost:3001/users/login", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ email, password }),
-      });
+      let response = await fetch(
+        `${process.env.REACT_APP_BACKEND_URL}/users/login`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ email, password }),
+        }
+      );
       if (response.ok) {
         let data = await response.json();
         localStorage.setItem("accessToken", data.accessToken);
