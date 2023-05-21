@@ -696,7 +696,6 @@ a {
 .login-container {
   display: flex;
   align-items: center;
-  padding: 1rem;
 }
 
 .login-welcome-text {
