@@ -16,6 +16,7 @@ export const ADD_EXPERIENCE = "ADD_EXPERIENCE";
 export const CHANGE_SHOW_MODAL = "CHANGE_SHOW_MODAL";
 export const CHANGE_EDIT_EXP_SECTION = "CHANGE_EDIT_EXP_SECTION";
 export const ADD_CURRENT_EXP_DATA = "ADD_CURRENT_EXP_DATA";
+export const CHANGE_EDIT_DATA = "CHANGE_EDIT_DATA";
 
 export const CHANGE_CLICKED_SEARCH_STATUS = "CHANGE_CLICKED_SEARCH_STATUS";
 export const ADD_SEARCH_RESULTS = "ADD_SEARCH_RESULTS";
@@ -104,7 +105,6 @@ export const addExperience = (accessToken, addedData) => {
           type: ADD_MY_PROFILE,
           payload: data,
         });
-        dispatch({ type: CHANGE_SHOW_MODAL, payload: false });
       } else {
         console.log("Error while trying to add experience");
       }
@@ -134,7 +134,6 @@ export const editExperience = (accessToken, editedData, index) => {
           type: ADD_MY_PROFILE,
           payload: data,
         });
-        dispatch({ type: CHANGE_SHOW_MODAL, payload: false });
       } else {
         console.log("Error while trying to update experience data");
       }

@@ -5,6 +5,7 @@ import {
   Form,
   Button,
   Container,
+  NavLink,
 } from "react-bootstrap";
 import search from "../../Icon/Search.svg";
 import logomini from "../../Icon/Logo-nav.svg";
@@ -21,6 +22,7 @@ import BlueButton from "../Buttons/BlueButton";
 import {
   ADD_CLICKED_PROFILE,
   ADD_MY_PROFILE,
+  fetchPosts,
 } from "../../redux/actions/actions";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState } from "react";
@@ -33,7 +35,7 @@ const MainNavbar = ({ signUp, setSignUp }) => {
   const myProfile = useSelector((state) => state.profiles.myProfile);
   const allProfiles = useSelector((state) => state.profiles.allProfiles.users);
 
-  const [homeClicked, setHomeClicked] = useState(false);
+  const [homeClicked, setHomeClicked] = useState(true);
   const [showSearchSmall, setShowSearchSmall] = useState(false);
   const [searchResults, setSearchedResults] = useState([]);
   const [query, setQuery] = useState("");
@@ -131,6 +133,7 @@ const MainNavbar = ({ signUp, setSignUp }) => {
                       className=" d-flex flex-column align-items-center nav-icon menu-size"
                       onClick={() => {
                         setHomeClicked(true);
+                        dispatch(fetchPosts);
                         navigate("/");
                       }}
                     >
@@ -196,7 +199,7 @@ const MainNavbar = ({ signUp, setSignUp }) => {
                       id="basic-nav-dropdown"
                       className="profile-name"
                     >
-                      <div
+                      <NavDropdown.Item
                         className="d-flex align-items-center px-2 pb-2"
                         onClick={() => {
                           setHomeClicked(false);
@@ -220,11 +223,12 @@ const MainNavbar = ({ signUp, setSignUp }) => {
                           </div>
                           <div className="fs-14">{myProfile.title}</div>
                         </div>
-                      </div>
-                      <div
+                      </NavDropdown.Item>
+                      <NavDropdown.Item
                         href="#action/3.1.2"
                         className="nav-view-profile-btn"
                         onClick={() => {
+                          setHomeClicked(false);
                           navigate(`/profile/${myProfile._id}`);
                         }}
                       >
@@ -232,7 +236,7 @@ const MainNavbar = ({ signUp, setSignUp }) => {
                           content={"View Profile"}
                           className="flex-grow-1"
                         />
-                      </div>
+                      </NavDropdown.Item>
                       <NavDropdown.Divider />
                       <div href="#action/3.2" className=" fs-16 fw-800 px-2">
                         Account

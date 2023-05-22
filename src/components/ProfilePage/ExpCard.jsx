@@ -20,7 +20,7 @@ function ExpCard({ experience, index, currentProfile }) {
 
   return (
     <div
-      className="experience-content d-flex justify-content-between"
+      className="experience-content d-flex justify-content-between py-2"
       key={experience._id}
       onMouseEnter={() => {
         setShowEditExp(true);
@@ -34,6 +34,7 @@ function ExpCard({ experience, index, currentProfile }) {
         editData={editData}
         index={index}
         show={showModal}
+        setShowModal={setShowModal}
         onHide={() => {
           setShowModal(false);
           setEditData(false);

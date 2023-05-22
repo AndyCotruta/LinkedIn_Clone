@@ -2,7 +2,11 @@ import { useState } from "react";
 import { Modal, Form, Row, Col } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { parseISO, format } from "date-fns";
-import { addExperience, editExperience } from "../../redux/actions/actions";
+import {
+  addExperience,
+  CHANGE_SHOW_MODAL,
+  editExperience,
+} from "../../redux/actions/actions";
 import BlueButton from "../Buttons/BlueButton";
 
 const ExperienceModal = ({
@@ -150,6 +154,11 @@ const ExperienceModal = ({
           <div
             onClick={() => {
               dispatch(editExperience(accessToken, editedData, index));
+              dispatch({
+                type: CHANGE_SHOW_MODAL,
+                payload: true,
+              });
+              setShowModal(false);
             }}
           >
             <BlueButton text={"Update"} />
@@ -158,6 +167,7 @@ const ExperienceModal = ({
           <div
             onClick={() => {
               dispatch(addExperience(accessToken, addedData));
+              setShowModal(false);
             }}
           >
             <BlueButton text={"Save"} />

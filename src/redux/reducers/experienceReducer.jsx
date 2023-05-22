@@ -1,6 +1,7 @@
 import {
   ADD_CURRENT_EXP_DATA,
   ADD_EXPERIENCE,
+  CHANGE_EDIT_DATA,
   CHANGE_EDIT_EXP_SECTION,
   CHANGE_SHOW_MODAL,
   GET_EXPERIENCE,
@@ -11,9 +12,13 @@ const initialState = {
   expData: [],
   error: false,
   addedExp: null,
-  showModal: false,
+
   showEditExpSection: false,
   currentExpData: null,
+  modal: {
+    showModal: false,
+    editData: false,
+  },
 };
 
 const experienceReducer = (state = initialState, action) => {
@@ -35,7 +40,7 @@ const experienceReducer = (state = initialState, action) => {
     case CHANGE_SHOW_MODAL: {
       return {
         ...state,
-        showModal: action.payload,
+        modal: { ...state.modal, showModal: action.payload },
       };
     }
 
@@ -57,6 +62,12 @@ const experienceReducer = (state = initialState, action) => {
       return {
         ...state,
         error: action.payload,
+      };
+    }
+    case CHANGE_EDIT_DATA: {
+      return {
+        ...state,
+        modal: { ...state.modal, editData: action.payload },
       };
     }
     default:

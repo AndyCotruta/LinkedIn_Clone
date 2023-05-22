@@ -1,17 +1,18 @@
 import message from "../../Icon/Send.svg";
 import plus from "../../Icon/Plus.svg";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import { HiOutlinePencil } from "react-icons/hi";
 import { useState } from "react";
 import MyProfileModal from "./MyProfileModal";
+import { CHANGE_SHOW_PROFILE_MODAL } from "../../redux/actions/actions";
 
 const ProfileSection = (props) => {
   const params = useParams();
-
+  const dispatch = useDispatch();
   const myProfile = useSelector((state) => state.profiles.myProfile);
+  const showModal = useSelector((state) => state.profiles.showProfileModal);
 
-  const [showModal, setShowModal] = useState(false);
   const [image, setImage] = useState();
 
   const handleImageUpload = (e) => {
@@ -24,9 +25,11 @@ const ProfileSection = (props) => {
     <div className="profile-main">
       <MyProfileModal
         show={showModal}
-        setShowModal={setShowModal}
         onHide={() => {
-          setShowModal(false);
+          dispatch({
+            type: CHANGE_SHOW_PROFILE_MODAL,
+            payload: false,
+          });
         }}
       />
       <div className="profile-cover">
@@ -55,7 +58,10 @@ const ProfileSection = (props) => {
                 <HiOutlinePencil
                   className="experience-buttons-icon"
                   onClick={() => {
-                    setShowModal(true);
+                    dispatch({
+                      type: CHANGE_SHOW_PROFILE_MODAL,
+                      payload: true,
+                    });
                   }}
                 />
               </button>

@@ -122,13 +122,6 @@ const MyProfileModal = (props) => {
       <Modal.Footer>
         <div
           onClick={() => {
-            props.setShowModal(false);
-          }}
-        >
-          <GreyBorderBtn content={"Close"} />
-        </div>
-        <div
-          onClick={() => {
             dispatch(editProfile(accessToken, addedMyProfileData));
           }}
         >

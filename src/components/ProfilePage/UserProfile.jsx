@@ -21,8 +21,8 @@ const UserProfile = () => {
     params.userId === myProfile._id ? myProfile : clickedProfile;
 
   return (
-    <>
-      <div sm={12} md={6} lg={8}>
+    <div className="d-flex">
+      <div sm={12} md={6} lg={8} className="mr-3">
         <ProfileSection currentProfile={currentProfile} />
         <div className="cards-main-container cd-width">
           <AboutUser currentProfile={currentProfile} />
@@ -52,7 +52,7 @@ const UserProfile = () => {
       <Col sm={12} md={6} lg={4} className="px-0">
         <RightSideBar />
       </Col>
-    </>
+    </div>
   );
 };
 export default UserProfile;
