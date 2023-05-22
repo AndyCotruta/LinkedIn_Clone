@@ -74,6 +74,7 @@ export const editProfile = (accessToken, editedData) => {
           type: ADD_MY_PROFILE,
           payload: data,
         });
+        dispatch({ type: CHANGE_SHOW_PROFILE_MODAL, payload: false });
       } else {
         console.log("Error while trying to update user data");
       }
@@ -103,6 +104,7 @@ export const addExperience = (accessToken, addedData) => {
           type: ADD_MY_PROFILE,
           payload: data,
         });
+        dispatch({ type: CHANGE_SHOW_MODAL, payload: false });
       } else {
         console.log("Error while trying to add experience");
       }
@@ -132,6 +134,7 @@ export const editExperience = (accessToken, editedData, index) => {
           type: ADD_MY_PROFILE,
           payload: data,
         });
+        dispatch({ type: CHANGE_SHOW_MODAL, payload: false });
       } else {
         console.log("Error while trying to update experience data");
       }

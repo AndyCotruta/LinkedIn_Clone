@@ -33,6 +33,7 @@ const MainNavbar = ({ signUp, setSignUp }) => {
   const myProfile = useSelector((state) => state.profiles.myProfile);
   const allProfiles = useSelector((state) => state.profiles.allProfiles.users);
 
+  const [homeClicked, setHomeClicked] = useState(false);
   const [showSearchSmall, setShowSearchSmall] = useState(false);
   const [searchResults, setSearchedResults] = useState([]);
   const [query, setQuery] = useState("");
@@ -129,11 +130,20 @@ const MainNavbar = ({ signUp, setSignUp }) => {
                     <div
                       className=" d-flex flex-column align-items-center nav-icon menu-size"
                       onClick={() => {
+                        setHomeClicked(true);
                         navigate("/");
                       }}
                     >
                       <div>
-                        <img src={home} alt="" className="nav-menu-icon" />
+                        <img
+                          src={home}
+                          alt=""
+                          className={
+                            homeClicked
+                              ? "nav-menu-icon-clicked"
+                              : "nav-menu-icon"
+                          }
+                        />
                       </div>
                       <p className="fs-12 nav-text">Home</p>
                     </div>
@@ -189,6 +199,7 @@ const MainNavbar = ({ signUp, setSignUp }) => {
                       <div
                         className="d-flex align-items-center px-2 pb-2"
                         onClick={() => {
+                          setHomeClicked(false);
                           navigate(`/profile/${myProfile._id}`);
                           dispatch({
                             type: ADD_CLICKED_PROFILE,

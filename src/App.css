@@ -1193,6 +1193,10 @@ a {
   filter: brightness(2.2);
 }
 
+.nav-menu-icon-clicked {
+  width: 24px;
+}
+
 .nav-text {
   color: #777575;
 }
